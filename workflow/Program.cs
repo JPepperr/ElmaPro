@@ -789,6 +789,7 @@ namespace workflow
             connectForm.a_sign_in_box.Visible = false;
             connectForm.a_sign_up_box.Visible = false;
             connectForm.a_forgot_password_box.Visible = false;
+            connectForm.a_main_screen_left_panel_progress_emli_box.Value = 0; // сбрасываем счетчик ЭМЛиков
             box.Visible = true;
         }
 
@@ -799,6 +800,7 @@ namespace workflow
             connectForm.a_sign_in_box.Visible = false;
             connectForm.a_sign_up_box.Visible = false;
             connectForm.a_forgot_password_box.Visible = false;
+            connectForm.a_main_screen_left_panel_progress_emli_box.Value = 0; // сбрасываем счетчик ЭМЛиков
             box.Visible = true;
         }
 
@@ -1068,12 +1070,15 @@ namespace workflow
 
                 Label labelOnElement = new Label();
 
+                labelOnElement.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+
                 labelOnElement.AutoSize = false;
                 labelOnElement.Size = new Size(widthOfElements, heightOfElements);
-                labelOnElement.Font = new Font("Microsoft San Serif", 8);
+                //labelOnElement.Font = new Font("Microsoft San Serif", 8);
 
                 if (environment == "documents")
                 {
+                    labelOnElement.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
                     labelOnElement.Tag = customNames[num];
                     labelOnElement.Cursor = Cursors.Hand;
                     labelOnElement.Click += new EventHandler(connectForm.a_documents_left_panel_button_click);
@@ -1091,12 +1096,14 @@ namespace workflow
 
                 if (environment == "chats" && num == 0)
                 {
+                    labelOnElement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
                     labelOnElement.BackColor = Color.Pink;
                     labelOnElement.ForeColor = Color.Black;
                 }
 
                 if(environment == "chats" && num == elements.Count() - 1)
                 {
+                    labelOnElement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
                     labelOnElement.BackColor = Color.Pink;
                     labelOnElement.ForeColor = Color.Black;
                     labelOnElement.Click += new EventHandler(connectForm.a_chats_left_panel_add_chat_button_click);
@@ -1168,6 +1175,7 @@ namespace workflow
                 int xPositionIncide = 0;
 
                 Label author = new Label();
+                author.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
                 author.Text = elements[num].author;
                 widthOfElementIncide = widthOfElements / 10 * 1;
                 heightOfElementIncide = element.Size.Height;
@@ -1178,6 +1186,7 @@ namespace workflow
                 xPositionIncide += widthOfElementIncide - 1;
 
                 Label time = new Label();
+                time.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
                 time.Text = elements[num].time.ToString();
                 widthOfElementIncide = widthOfElements / 10 * 1;
                 heightOfElementIncide = element.Size.Height;
@@ -1188,6 +1197,7 @@ namespace workflow
                 xPositionIncide += widthOfElementIncide - 1;
 
                 Label label = new Label();
+                label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
                 label.Text = elements[num].label;
                 widthOfElementIncide = widthOfElements / 10 * 1;
                 heightOfElementIncide = element.Size.Height;
@@ -1206,12 +1216,13 @@ namespace workflow
                     //Добавляем content
 
                     content.Text = elements[num].content;
+                    content.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
                     widthOfElementIncide = widthOfElements / 10 * 6;
                     heightOfElementIncide = element.Size.Height;
                     content.Size = new Size(widthOfElementIncide, heightOfElementIncide);
                     content.Location = new Point(xPositionIncide, 0);
                     content.BorderStyle = BorderStyle.FixedSingle;
-                    content.TextAlign = ContentAlignment.MiddleCenter;
+                    content.TextAlign = ContentAlignment.MiddleLeft;
                     xPositionIncide += widthOfElementIncide - 1;
 
                     //Добавляем панель для кнопки удаления
@@ -1244,6 +1255,7 @@ namespace workflow
                 else
                 {
                     content.Text = elements[num].content;
+                    content.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
                     widthOfElementIncide = widthOfElements / 10 * 7;
                     heightOfElementIncide = element.Size.Height;
                     content.Size = new Size(widthOfElementIncide, heightOfElementIncide);
@@ -1296,7 +1308,8 @@ namespace workflow
                 int xPositionIncide = 0;
 
                 Label read = new Label();
-                if(num == 0) //Первый элемент
+                read.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                if (num == 0) //Первый элемент
                 {
                     read.Text = elements[num].read;
                 }
@@ -1313,6 +1326,7 @@ namespace workflow
                 xPositionIncide += widthOfElementIncide - 1;
 
                 Label author = new Label();
+                author.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
                 author.Text = elements[num].author;
                 widthOfElementIncide = widthOfElements / 10 * 3;
                 heightOfElementIncide = element.Size.Height;
@@ -1324,6 +1338,7 @@ namespace workflow
 
                 Label label = new Label();
                 label.Text = elements[num].label;
+                label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
                 widthOfElementIncide = widthOfElements / 10 * 4;
                 heightOfElementIncide = element.Size.Height;
                 label.Size = new Size(widthOfElementIncide, heightOfElementIncide);
@@ -1354,8 +1369,9 @@ namespace workflow
                 readDocument.Click += new EventHandler(connectForm.a_readDocument_button_click);
 
                 Label readDocumentText = new Label();
+                readDocumentText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
                 readDocumentText.Text = "Скачать";
-                widthOfElementIncide = 50;
+                widthOfElementIncide = 60;
                 heightOfElementIncide = 22;
                 readDocumentText.Size = new Size(widthOfElementIncide, heightOfElementIncide);
                 readDocumentText.Location = new Point(buttonBox.Size.Width / 2 - widthOfElementIncide / 2, element.Size.Height / 2 - heightOfElementIncide / 3);
@@ -1416,6 +1432,7 @@ namespace workflow
                 int xPositionIncide = 0;
 
                 Label author = new Label();
+                author.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
                 author.Text = elements[num].author;
                 widthOfElementIncide = widthOfElements / 10 * 4;
                 heightOfElementIncide = element.Size.Height;
@@ -1426,6 +1443,7 @@ namespace workflow
                 xPositionIncide += widthOfElementIncide - 1;
 
                 Label name = new Label();
+                name.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
                 name.Text = elements[num].name;
                 widthOfElementIncide = widthOfElements / 10 * 4;
                 heightOfElementIncide = element.Size.Height;
@@ -1518,8 +1536,9 @@ namespace workflow
                 }
 
                 Label downloadTemplateText = new Label();
+                downloadTemplateText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
                 downloadTemplateText.Text = "Действие";
-                widthOfElementIncide = 60;
+                widthOfElementIncide = 70;
                 heightOfElementIncide = 22;
                 downloadTemplateText.Size = new Size(widthOfElementIncide, heightOfElementIncide);
                 downloadTemplateText.Location = new Point(buttonBox.Size.Width / 2 - widthOfElementIncide / 2, element.Size.Height / 2 - heightOfElementIncide / 3);
@@ -1576,6 +1595,7 @@ namespace workflow
                 Panel element = new Panel();
 
                 Label text = new Label();
+                text.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
                 text.Text = elements[num].text;
 
                 element.Size = new Size(text.GetPreferredSize(new Size(widthOfElements, 0)).Width + 30, text.GetPreferredSize(new Size(widthOfElements, 0)).Height + 40);
@@ -1591,6 +1611,7 @@ namespace workflow
                 }
 
                 Label author = new Label();
+                author.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
                 author.Text = elements[num].author;
                 widthOfElementIncide = element.Size.Width;
                 heightOfElementIncide = 20;
@@ -1621,7 +1642,7 @@ namespace workflow
             nameOfConversation.Size = new Size(180, 20);
             nameOfConversation.BackColor = Color.Pink;
             nameOfConversation.TextAlign = ContentAlignment.MiddleCenter;
-            nameOfConversation.Font = new Font("Microsoft San Serif", 10);
+            nameOfConversation.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             nameOfConversation.Location = new Point(connectForm.a_main_screen_main_box.Size.Width / 2 - nameOfConversation.Size.Width / 2, 0);
             nameOfConversation.Tag = conversation.id;
             nameOfConversation.Cursor = Cursors.Hand;

@@ -30,7 +30,7 @@ namespace workflow
         public main_form()
         {
             InitializeComponent();
-            a_main_screen_main_box_chats_mode_interface_panel_text_box.PlaceHolderText = "Введите сообщение";
+            a_main_screen_main_box_chats_mode_interface_panel_text_box.PlaceHolderText = "Введите сообщение...";
         }
 
         public void formSetter()
@@ -367,6 +367,8 @@ namespace workflow
             string fileLabel = a_main_screen_main_box_add_file_panel_label_text_box.Text;
             string fileName = a_send_file_dialog.FileName;
 
+            const int lengthLimit = 50;
+
             if (fileName.Split('.').Length > 2)
             {
                 a_main_screen_main_box_add_file_panel_info_label.ForeColor = Color.Red;
@@ -378,11 +380,18 @@ namespace workflow
 
             if (fileLabel.IndexOfAny(forbittenSymbols) != -1){
                 a_main_screen_main_box_add_file_panel_info_label.ForeColor = Color.Red;
-                a_main_screen_main_box_add_file_panel_info_label.Text = "Нельзя отправлять на сервер файлы, c именем, содержащим спец. символы";
+                a_main_screen_main_box_add_file_panel_info_label.Text = "Нельзя отправлять на сервер файлы c именем, содержащим спец. символы";
                 return;
             }
 
-            if(fileLabel != "" && fileName != "a_selected_file")
+            if (fileLabel.ToString().Length > lengthLimit)
+            {
+                a_main_screen_main_box_add_file_panel_info_label.ForeColor = Color.Red;
+                a_main_screen_main_box_add_file_panel_info_label.Text = "Нельзя отправлять на сервер файлы с темой больше " + lengthLimit.ToString() + " символов";
+                return;
+            }
+
+            if(fileLabel != "" && fileName != "a_selected_file" && a_main_screen_main_box_add_file_panel_recipients_list_box.SelectedItems.Count != 0)
             {
 
                 Dictionary<string, bool> recipients = new Dictionary<string, bool>();
@@ -396,6 +405,7 @@ namespace workflow
 
                 a_main_screen_main_box_add_file_panel_info_label.ForeColor = Color.Green;
                 a_main_screen_main_box_add_file_panel_info_label.Text = "Успешно отправлено";
+                a_send_file_dialog.FileName = "a_selected_file";
             }
             else
             {
@@ -506,7 +516,7 @@ namespace workflow
         {
             string text = a_main_screen_main_box_chats_mode_interface_panel_text_box.Text;
             a_main_screen_main_box_chats_mode_interface_panel_text_box.Text = "";
-            a_main_screen_main_box_chats_mode_interface_panel_text_box.PlaceHolderText = "Введите сообщение";
+            a_main_screen_main_box_chats_mode_interface_panel_text_box.PlaceHolderText = "Введите сообщение...";
             Server.sendMessage(text);
             updateFormByServer(null, null);
             stopUpdatingMode = false;

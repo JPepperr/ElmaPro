@@ -100,11 +100,13 @@
             this.a_dark_background = new System.Windows.Forms.Panel();
             this.a_main_screen_main_box_chats_mode_interface_panel = new System.Windows.Forms.Panel();
             this.a_main_screen_main_box_chats_mode_interface_panel_send_button = new System.Windows.Forms.Button();
+            this.a_main_screen_main_box_chats_mode_interface_panel_text_box = new workflow.PlaceHolderTextBox();
             this.a_main_screen_main_box_add_template_button = new System.Windows.Forms.Panel();
             this.a_main_screen_main_box_add_template_button_text = new System.Windows.Forms.Label();
             this.a_main_screen_main_box_add_news_button = new System.Windows.Forms.Panel();
             this.a_main_screen_main_box_add_news_button_text = new System.Windows.Forms.Label();
             this.a_main_screen_main_info_panel = new System.Windows.Forms.Panel();
+            this.a_main_screen_main_info_panel_info_text = new System.Windows.Forms.Label();
             this.a_main_screen_main_info_panel_change_button = new System.Windows.Forms.Button();
             this.a_main_screen_main_info_panel_text = new System.Windows.Forms.Label();
             this.a_main_screen_top_panel_box = new System.Windows.Forms.Panel();
@@ -115,6 +117,9 @@
             this.a_main_screen_top_panel_button1 = new System.Windows.Forms.Panel();
             this.a_main_screen_top_panel_button1_text = new System.Windows.Forms.Label();
             this.a_main_screen_left_panel_box = new System.Windows.Forms.Panel();
+            this.a_main_screen_left_panel_label_emli_box = new System.Windows.Forms.Label();
+            this.a_main_screen_left_panel_progress_emli_box = new System.Windows.Forms.ProgressBar();
+            this.a_main_screen_left_panel_logo_emli_box = new System.Windows.Forms.PictureBox();
             this.a_main_screen_left_panel_logo_box = new System.Windows.Forms.PictureBox();
             this.a_main_screen_left_panel_picture_box = new System.Windows.Forms.Panel();
             this.a_main_screen_left_panel_change_image_label = new System.Windows.Forms.Label();
@@ -130,11 +135,6 @@
             this.a_send_template_dialog = new System.Windows.Forms.OpenFileDialog();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.a_main_screen_main_info_panel_info_text = new System.Windows.Forms.Label();
-            this.a_main_screen_left_panel_logo_emli_box = new System.Windows.Forms.PictureBox();
-            this.a_main_screen_left_panel_progress_emli_box = new System.Windows.Forms.ProgressBar();
-            this.a_main_screen_left_panel_label_emli_box = new System.Windows.Forms.Label();
-            this.a_main_screen_main_box_chats_mode_interface_panel_text_box = new workflow.PlaceHolderTextBox();
             this.a_sign_in_box.SuspendLayout();
             this.a_sign_up_box.SuspendLayout();
             this.a_forgot_password_box.SuspendLayout();
@@ -154,12 +154,12 @@
             this.a_main_screen_top_panel_button2.SuspendLayout();
             this.a_main_screen_top_panel_button1.SuspendLayout();
             this.a_main_screen_left_panel_box.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.a_main_screen_left_panel_logo_emli_box)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.a_main_screen_left_panel_logo_box)).BeginInit();
             this.a_main_screen_left_panel_picture_box.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.a_main_screen_left_panel_picture)).BeginInit();
             this.a_main_screen_left_panel_time_box.SuspendLayout();
             this.a_main_screen_left_panel_name_box.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.a_main_screen_left_panel_logo_emli_box)).BeginInit();
             this.SuspendLayout();
             // 
             // a_sign_in_box
@@ -465,10 +465,10 @@
             this.a_main_screen_main_box.Controls.Add(this.a_main_screen_main_box_chats_mode_interface_panel);
             this.a_main_screen_main_box.Controls.Add(this.a_main_screen_main_box_add_template_button);
             this.a_main_screen_main_box.Controls.Add(this.a_main_screen_main_box_add_news_button);
-            this.a_main_screen_main_box.Location = new System.Drawing.Point(188, 213);
+            this.a_main_screen_main_box.Location = new System.Drawing.Point(188, 172);
             this.a_main_screen_main_box.Margin = new System.Windows.Forms.Padding(4);
             this.a_main_screen_main_box.Name = "a_main_screen_main_box";
-            this.a_main_screen_main_box.Size = new System.Drawing.Size(1144, 526);
+            this.a_main_screen_main_box.Size = new System.Drawing.Size(1135, 560);
             this.a_main_screen_main_box.TabIndex = 4;
             // 
             // a_conversation_options_panel
@@ -485,40 +485,43 @@
             this.a_conversation_options_panel.Location = new System.Drawing.Point(439, 44);
             this.a_conversation_options_panel.Margin = new System.Windows.Forms.Padding(4);
             this.a_conversation_options_panel.Name = "a_conversation_options_panel";
-            this.a_conversation_options_panel.Size = new System.Drawing.Size(267, 402);
+            this.a_conversation_options_panel.Size = new System.Drawing.Size(267, 416);
             this.a_conversation_options_panel.TabIndex = 11;
             this.a_conversation_options_panel.Visible = false;
             // 
             // a_conversation_options_panel_add_users_list_box
             // 
+            this.a_conversation_options_panel_add_users_list_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_conversation_options_panel_add_users_list_box.FormattingEnabled = true;
-            this.a_conversation_options_panel_add_users_list_box.ItemHeight = 16;
+            this.a_conversation_options_panel_add_users_list_box.ItemHeight = 18;
             this.a_conversation_options_panel_add_users_list_box.Items.AddRange(new object[] {
             " "});
             this.a_conversation_options_panel_add_users_list_box.Location = new System.Drawing.Point(4, 143);
             this.a_conversation_options_panel_add_users_list_box.Margin = new System.Windows.Forms.Padding(4);
             this.a_conversation_options_panel_add_users_list_box.Name = "a_conversation_options_panel_add_users_list_box";
             this.a_conversation_options_panel_add_users_list_box.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.a_conversation_options_panel_add_users_list_box.Size = new System.Drawing.Size(255, 164);
+            this.a_conversation_options_panel_add_users_list_box.Size = new System.Drawing.Size(255, 166);
             this.a_conversation_options_panel_add_users_list_box.TabIndex = 13;
             // 
             // a_conversation_options_panel_name_label
             // 
             this.a_conversation_options_panel_name_label.AutoSize = true;
+            this.a_conversation_options_panel_name_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_conversation_options_panel_name_label.Location = new System.Drawing.Point(4, 34);
             this.a_conversation_options_panel_name_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.a_conversation_options_panel_name_label.Name = "a_conversation_options_panel_name_label";
-            this.a_conversation_options_panel_name_label.Size = new System.Drawing.Size(111, 17);
+            this.a_conversation_options_panel_name_label.Size = new System.Drawing.Size(114, 18);
             this.a_conversation_options_panel_name_label.TabIndex = 12;
             this.a_conversation_options_panel_name_label.Text = "Название чата:";
             // 
             // a_conversation_options_panel_add_users_label
             // 
             this.a_conversation_options_panel_add_users_label.AutoSize = true;
+            this.a_conversation_options_panel_add_users_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_conversation_options_panel_add_users_label.Location = new System.Drawing.Point(4, 113);
             this.a_conversation_options_panel_add_users_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.a_conversation_options_panel_add_users_label.Name = "a_conversation_options_panel_add_users_label";
-            this.a_conversation_options_panel_add_users_label.Size = new System.Drawing.Size(155, 17);
+            this.a_conversation_options_panel_add_users_label.Size = new System.Drawing.Size(164, 18);
             this.a_conversation_options_panel_add_users_label.TabIndex = 11;
             this.a_conversation_options_panel_add_users_label.Text = "Добавить участников:";
             // 
@@ -527,11 +530,12 @@
             this.a_conversation_options_panel_save_button.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.a_conversation_options_panel_save_button.FlatAppearance.BorderSize = 2;
             this.a_conversation_options_panel_save_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.a_conversation_options_panel_save_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_conversation_options_panel_save_button.ForeColor = System.Drawing.Color.Black;
             this.a_conversation_options_panel_save_button.Location = new System.Drawing.Point(41, 322);
             this.a_conversation_options_panel_save_button.Margin = new System.Windows.Forms.Padding(4);
             this.a_conversation_options_panel_save_button.Name = "a_conversation_options_panel_save_button";
-            this.a_conversation_options_panel_save_button.Size = new System.Drawing.Size(163, 28);
+            this.a_conversation_options_panel_save_button.Size = new System.Drawing.Size(163, 33);
             this.a_conversation_options_panel_save_button.TabIndex = 9;
             this.a_conversation_options_panel_save_button.Text = "Сохранить";
             this.a_conversation_options_panel_save_button.UseVisualStyleBackColor = false;
@@ -542,11 +546,12 @@
             this.a_conversation_options_panel_leave_button.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.a_conversation_options_panel_leave_button.FlatAppearance.BorderSize = 2;
             this.a_conversation_options_panel_leave_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.a_conversation_options_panel_leave_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_conversation_options_panel_leave_button.ForeColor = System.Drawing.Color.Black;
-            this.a_conversation_options_panel_leave_button.Location = new System.Drawing.Point(41, 361);
+            this.a_conversation_options_panel_leave_button.Location = new System.Drawing.Point(41, 363);
             this.a_conversation_options_panel_leave_button.Margin = new System.Windows.Forms.Padding(4);
             this.a_conversation_options_panel_leave_button.Name = "a_conversation_options_panel_leave_button";
-            this.a_conversation_options_panel_leave_button.Size = new System.Drawing.Size(163, 28);
+            this.a_conversation_options_panel_leave_button.Size = new System.Drawing.Size(163, 33);
             this.a_conversation_options_panel_leave_button.TabIndex = 8;
             this.a_conversation_options_panel_leave_button.Text = "Выйти из чата";
             this.a_conversation_options_panel_leave_button.UseVisualStyleBackColor = false;
@@ -554,10 +559,11 @@
             // 
             // a_conversation_options_panel_name_text_box
             // 
+            this.a_conversation_options_panel_name_text_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_conversation_options_panel_name_text_box.Location = new System.Drawing.Point(4, 62);
             this.a_conversation_options_panel_name_text_box.Margin = new System.Windows.Forms.Padding(4);
             this.a_conversation_options_panel_name_text_box.Name = "a_conversation_options_panel_name_text_box";
-            this.a_conversation_options_panel_name_text_box.Size = new System.Drawing.Size(257, 22);
+            this.a_conversation_options_panel_name_text_box.Size = new System.Drawing.Size(257, 24);
             this.a_conversation_options_panel_name_text_box.TabIndex = 2;
             // 
             // a_conversation_options_panel_exit_button
@@ -621,10 +627,11 @@
             this.a_main_screen_main_box_change_news_panel_change_button.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.a_main_screen_main_box_change_news_panel_change_button.FlatAppearance.BorderSize = 2;
             this.a_main_screen_main_box_change_news_panel_change_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.a_main_screen_main_box_change_news_panel_change_button.Location = new System.Drawing.Point(345, 303);
+            this.a_main_screen_main_box_change_news_panel_change_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.a_main_screen_main_box_change_news_panel_change_button.Location = new System.Drawing.Point(345, 295);
             this.a_main_screen_main_box_change_news_panel_change_button.Margin = new System.Windows.Forms.Padding(4);
             this.a_main_screen_main_box_change_news_panel_change_button.Name = "a_main_screen_main_box_change_news_panel_change_button";
-            this.a_main_screen_main_box_change_news_panel_change_button.Size = new System.Drawing.Size(219, 28);
+            this.a_main_screen_main_box_change_news_panel_change_button.Size = new System.Drawing.Size(219, 33);
             this.a_main_screen_main_box_change_news_panel_change_button.TabIndex = 5;
             this.a_main_screen_main_box_change_news_panel_change_button.Text = "Изменить новость";
             this.a_main_screen_main_box_change_news_panel_change_button.UseVisualStyleBackColor = true;
@@ -633,6 +640,7 @@
             // a_main_screen_main_box_change_news_panel_news_content_text_box
             // 
             this.a_main_screen_main_box_change_news_panel_news_content_text_box.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.a_main_screen_main_box_change_news_panel_news_content_text_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_main_box_change_news_panel_news_content_text_box.Location = new System.Drawing.Point(173, 49);
             this.a_main_screen_main_box_change_news_panel_news_content_text_box.Margin = new System.Windows.Forms.Padding(4);
             this.a_main_screen_main_box_change_news_panel_news_content_text_box.Name = "a_main_screen_main_box_change_news_panel_news_content_text_box";
@@ -643,10 +651,11 @@
             // a_main_screen_main_box_change_news_panel_news_content_label
             // 
             this.a_main_screen_main_box_change_news_panel_news_content_label.AutoSize = true;
+            this.a_main_screen_main_box_change_news_panel_news_content_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_main_box_change_news_panel_news_content_label.Location = new System.Drawing.Point(17, 49);
             this.a_main_screen_main_box_change_news_panel_news_content_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.a_main_screen_main_box_change_news_panel_news_content_label.Name = "a_main_screen_main_box_change_news_panel_news_content_label";
-            this.a_main_screen_main_box_change_news_panel_news_content_label.Size = new System.Drawing.Size(111, 17);
+            this.a_main_screen_main_box_change_news_panel_news_content_label.Size = new System.Drawing.Size(117, 18);
             this.a_main_screen_main_box_change_news_panel_news_content_label.TabIndex = 1;
             this.a_main_screen_main_box_change_news_panel_news_content_label.Text = "Текст новости: ";
             // 
@@ -661,14 +670,15 @@
             this.a_main_screen_main_box_add_news_panel.Controls.Add(this.a_main_screen_main_box_add_news_panel_news_label_text_box);
             this.a_main_screen_main_box_add_news_panel.Controls.Add(this.a_main_screen_main_box_add_news_panel_news_content_label);
             this.a_main_screen_main_box_add_news_panel.Controls.Add(this.a_main_screen_main_box_add_news_panel_news_label_label);
-            this.a_main_screen_main_box_add_news_panel.Location = new System.Drawing.Point(133, 98);
+            this.a_main_screen_main_box_add_news_panel.Location = new System.Drawing.Point(101, 98);
             this.a_main_screen_main_box_add_news_panel.Margin = new System.Windows.Forms.Padding(4);
             this.a_main_screen_main_box_add_news_panel.Name = "a_main_screen_main_box_add_news_panel";
-            this.a_main_screen_main_box_add_news_panel.Size = new System.Drawing.Size(877, 334);
+            this.a_main_screen_main_box_add_news_panel.Size = new System.Drawing.Size(909, 357);
             this.a_main_screen_main_box_add_news_panel.TabIndex = 3;
             // 
             // a_main_screen_main_box_add_news_panel_info_label
             // 
+            this.a_main_screen_main_box_add_news_panel_info_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_main_box_add_news_panel_info_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.a_main_screen_main_box_add_news_panel_info_label.Location = new System.Drawing.Point(291, 279);
             this.a_main_screen_main_box_add_news_panel_info_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -683,7 +693,7 @@
             this.a_main_screen_main_box_add_news_panel_exit_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.a_main_screen_main_box_add_news_panel_exit_button.FlatAppearance.BorderSize = 0;
             this.a_main_screen_main_box_add_news_panel_exit_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.a_main_screen_main_box_add_news_panel_exit_button.Location = new System.Drawing.Point(841, 4);
+            this.a_main_screen_main_box_add_news_panel_exit_button.Location = new System.Drawing.Point(873, 4);
             this.a_main_screen_main_box_add_news_panel_exit_button.Margin = new System.Windows.Forms.Padding(4);
             this.a_main_screen_main_box_add_news_panel_exit_button.Name = "a_main_screen_main_box_add_news_panel_exit_button";
             this.a_main_screen_main_box_add_news_panel_exit_button.Size = new System.Drawing.Size(29, 27);
@@ -698,10 +708,11 @@
             this.a_main_screen_main_box_add_news_panel_publish_button.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.a_main_screen_main_box_add_news_panel_publish_button.FlatAppearance.BorderSize = 2;
             this.a_main_screen_main_box_add_news_panel_publish_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.a_main_screen_main_box_add_news_panel_publish_button.Location = new System.Drawing.Point(345, 303);
+            this.a_main_screen_main_box_add_news_panel_publish_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.a_main_screen_main_box_add_news_panel_publish_button.Location = new System.Drawing.Point(345, 309);
             this.a_main_screen_main_box_add_news_panel_publish_button.Margin = new System.Windows.Forms.Padding(4);
             this.a_main_screen_main_box_add_news_panel_publish_button.Name = "a_main_screen_main_box_add_news_panel_publish_button";
-            this.a_main_screen_main_box_add_news_panel_publish_button.Size = new System.Drawing.Size(219, 28);
+            this.a_main_screen_main_box_add_news_panel_publish_button.Size = new System.Drawing.Size(219, 33);
             this.a_main_screen_main_box_add_news_panel_publish_button.TabIndex = 5;
             this.a_main_screen_main_box_add_news_panel_publish_button.Text = "Опубликовать новость";
             this.a_main_screen_main_box_add_news_panel_publish_button.UseVisualStyleBackColor = true;
@@ -710,39 +721,43 @@
             // a_main_screen_main_box_add_news_panel_news_content_text_box
             // 
             this.a_main_screen_main_box_add_news_panel_news_content_text_box.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.a_main_screen_main_box_add_news_panel_news_content_text_box.Location = new System.Drawing.Point(173, 81);
+            this.a_main_screen_main_box_add_news_panel_news_content_text_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.a_main_screen_main_box_add_news_panel_news_content_text_box.Location = new System.Drawing.Point(205, 81);
             this.a_main_screen_main_box_add_news_panel_news_content_text_box.Margin = new System.Windows.Forms.Padding(4);
             this.a_main_screen_main_box_add_news_panel_news_content_text_box.Name = "a_main_screen_main_box_add_news_panel_news_content_text_box";
-            this.a_main_screen_main_box_add_news_panel_news_content_text_box.Size = new System.Drawing.Size(680, 191);
+            this.a_main_screen_main_box_add_news_panel_news_content_text_box.Size = new System.Drawing.Size(648, 191);
             this.a_main_screen_main_box_add_news_panel_news_content_text_box.TabIndex = 4;
             this.a_main_screen_main_box_add_news_panel_news_content_text_box.Text = "";
             // 
             // a_main_screen_main_box_add_news_panel_news_label_text_box
             // 
             this.a_main_screen_main_box_add_news_panel_news_label_text_box.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.a_main_screen_main_box_add_news_panel_news_label_text_box.Location = new System.Drawing.Point(173, 49);
+            this.a_main_screen_main_box_add_news_panel_news_label_text_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.a_main_screen_main_box_add_news_panel_news_label_text_box.Location = new System.Drawing.Point(205, 49);
             this.a_main_screen_main_box_add_news_panel_news_label_text_box.Margin = new System.Windows.Forms.Padding(4);
             this.a_main_screen_main_box_add_news_panel_news_label_text_box.Name = "a_main_screen_main_box_add_news_panel_news_label_text_box";
-            this.a_main_screen_main_box_add_news_panel_news_label_text_box.Size = new System.Drawing.Size(681, 22);
+            this.a_main_screen_main_box_add_news_panel_news_label_text_box.Size = new System.Drawing.Size(649, 24);
             this.a_main_screen_main_box_add_news_panel_news_label_text_box.TabIndex = 2;
             // 
             // a_main_screen_main_box_add_news_panel_news_content_label
             // 
             this.a_main_screen_main_box_add_news_panel_news_content_label.AutoSize = true;
+            this.a_main_screen_main_box_add_news_panel_news_content_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_main_box_add_news_panel_news_content_label.Location = new System.Drawing.Point(17, 81);
             this.a_main_screen_main_box_add_news_panel_news_content_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.a_main_screen_main_box_add_news_panel_news_content_label.Name = "a_main_screen_main_box_add_news_panel_news_content_label";
-            this.a_main_screen_main_box_add_news_panel_news_content_label.Size = new System.Drawing.Size(111, 17);
+            this.a_main_screen_main_box_add_news_panel_news_content_label.Size = new System.Drawing.Size(117, 18);
             this.a_main_screen_main_box_add_news_panel_news_content_label.TabIndex = 1;
             this.a_main_screen_main_box_add_news_panel_news_content_label.Text = "Текст новости: ";
             // 
             // a_main_screen_main_box_add_news_panel_news_label_label
             // 
             this.a_main_screen_main_box_add_news_panel_news_label_label.AutoSize = true;
+            this.a_main_screen_main_box_add_news_panel_news_label_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_main_box_add_news_panel_news_label_label.Location = new System.Drawing.Point(17, 49);
             this.a_main_screen_main_box_add_news_panel_news_label_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.a_main_screen_main_box_add_news_panel_news_label_label.Name = "a_main_screen_main_box_add_news_panel_news_label_label";
-            this.a_main_screen_main_box_add_news_panel_news_label_label.Size = new System.Drawing.Size(141, 17);
+            this.a_main_screen_main_box_add_news_panel_news_label_label.Size = new System.Drawing.Size(153, 18);
             this.a_main_screen_main_box_add_news_panel_news_label_label.TabIndex = 0;
             this.a_main_screen_main_box_add_news_panel_news_label_label.Text = "Заголовок новости: ";
             // 
@@ -763,11 +778,12 @@
             this.a_main_screen_main_box_add_file_panel.Location = new System.Drawing.Point(133, 98);
             this.a_main_screen_main_box_add_file_panel.Margin = new System.Windows.Forms.Padding(4);
             this.a_main_screen_main_box_add_file_panel.Name = "a_main_screen_main_box_add_file_panel";
-            this.a_main_screen_main_box_add_file_panel.Size = new System.Drawing.Size(877, 334);
+            this.a_main_screen_main_box_add_file_panel.Size = new System.Drawing.Size(877, 352);
             this.a_main_screen_main_box_add_file_panel.TabIndex = 5;
             // 
             // a_main_screen_main_box_add_file_panel_info_label
             // 
+            this.a_main_screen_main_box_add_file_panel_info_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_main_box_add_file_panel_info_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.a_main_screen_main_box_add_file_panel_info_label.Location = new System.Drawing.Point(21, 279);
             this.a_main_screen_main_box_add_file_panel_info_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -779,33 +795,36 @@
             // a_main_screen_main_box_add_file_panel_file_name_label
             // 
             this.a_main_screen_main_box_add_file_panel_file_name_label.AutoSize = true;
+            this.a_main_screen_main_box_add_file_panel_file_name_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_main_box_add_file_panel_file_name_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.a_main_screen_main_box_add_file_panel_file_name_label.Location = new System.Drawing.Point(337, 97);
             this.a_main_screen_main_box_add_file_panel_file_name_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.a_main_screen_main_box_add_file_panel_file_name_label.Name = "a_main_screen_main_box_add_file_panel_file_name_label";
-            this.a_main_screen_main_box_add_file_panel_file_name_label.Size = new System.Drawing.Size(0, 17);
+            this.a_main_screen_main_box_add_file_panel_file_name_label.Size = new System.Drawing.Size(0, 18);
             this.a_main_screen_main_box_add_file_panel_file_name_label.TabIndex = 10;
             // 
             // a_main_screen_main_box_add_file_panel_recipients_list_box
             // 
+            this.a_main_screen_main_box_add_file_panel_recipients_list_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_main_box_add_file_panel_recipients_list_box.FormattingEnabled = true;
-            this.a_main_screen_main_box_add_file_panel_recipients_list_box.ItemHeight = 16;
+            this.a_main_screen_main_box_add_file_panel_recipients_list_box.ItemHeight = 18;
             this.a_main_screen_main_box_add_file_panel_recipients_list_box.Items.AddRange(new object[] {
             " "});
             this.a_main_screen_main_box_add_file_panel_recipients_list_box.Location = new System.Drawing.Point(173, 159);
             this.a_main_screen_main_box_add_file_panel_recipients_list_box.Margin = new System.Windows.Forms.Padding(4);
             this.a_main_screen_main_box_add_file_panel_recipients_list_box.Name = "a_main_screen_main_box_add_file_panel_recipients_list_box";
             this.a_main_screen_main_box_add_file_panel_recipients_list_box.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.a_main_screen_main_box_add_file_panel_recipients_list_box.Size = new System.Drawing.Size(680, 116);
+            this.a_main_screen_main_box_add_file_panel_recipients_list_box.Size = new System.Drawing.Size(680, 112);
             this.a_main_screen_main_box_add_file_panel_recipients_list_box.TabIndex = 9;
             // 
             // a_main_screen_main_box_add_file_panel_recipients_label
             // 
             this.a_main_screen_main_box_add_file_panel_recipients_label.AutoSize = true;
+            this.a_main_screen_main_box_add_file_panel_recipients_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_main_box_add_file_panel_recipients_label.Location = new System.Drawing.Point(17, 159);
             this.a_main_screen_main_box_add_file_panel_recipients_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.a_main_screen_main_box_add_file_panel_recipients_label.Name = "a_main_screen_main_box_add_file_panel_recipients_label";
-            this.a_main_screen_main_box_add_file_panel_recipients_label.Size = new System.Drawing.Size(96, 17);
+            this.a_main_screen_main_box_add_file_panel_recipients_label.Size = new System.Drawing.Size(100, 18);
             this.a_main_screen_main_box_add_file_panel_recipients_label.TabIndex = 8;
             this.a_main_screen_main_box_add_file_panel_recipients_label.Text = "Получатели: ";
             // 
@@ -815,10 +834,11 @@
             this.a_main_screen_main_box_add_file_panel_file_button.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.a_main_screen_main_box_add_file_panel_file_button.FlatAppearance.BorderSize = 2;
             this.a_main_screen_main_box_add_file_panel_file_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.a_main_screen_main_box_add_file_panel_file_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_main_box_add_file_panel_file_button.Location = new System.Drawing.Point(173, 91);
             this.a_main_screen_main_box_add_file_panel_file_button.Margin = new System.Windows.Forms.Padding(4);
             this.a_main_screen_main_box_add_file_panel_file_button.Name = "a_main_screen_main_box_add_file_panel_file_button";
-            this.a_main_screen_main_box_add_file_panel_file_button.Size = new System.Drawing.Size(156, 28);
+            this.a_main_screen_main_box_add_file_panel_file_button.Size = new System.Drawing.Size(156, 34);
             this.a_main_screen_main_box_add_file_panel_file_button.TabIndex = 7;
             this.a_main_screen_main_box_add_file_panel_file_button.Text = "Выбрать файл";
             this.a_main_screen_main_box_add_file_panel_file_button.UseVisualStyleBackColor = true;
@@ -845,10 +865,11 @@
             this.a_main_screen_main_box_add_file_panel_send_button.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.a_main_screen_main_box_add_file_panel_send_button.FlatAppearance.BorderSize = 2;
             this.a_main_screen_main_box_add_file_panel_send_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.a_main_screen_main_box_add_file_panel_send_button.Location = new System.Drawing.Point(345, 303);
+            this.a_main_screen_main_box_add_file_panel_send_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.a_main_screen_main_box_add_file_panel_send_button.Location = new System.Drawing.Point(345, 309);
             this.a_main_screen_main_box_add_file_panel_send_button.Margin = new System.Windows.Forms.Padding(4);
             this.a_main_screen_main_box_add_file_panel_send_button.Name = "a_main_screen_main_box_add_file_panel_send_button";
-            this.a_main_screen_main_box_add_file_panel_send_button.Size = new System.Drawing.Size(219, 28);
+            this.a_main_screen_main_box_add_file_panel_send_button.Size = new System.Drawing.Size(219, 33);
             this.a_main_screen_main_box_add_file_panel_send_button.TabIndex = 5;
             this.a_main_screen_main_box_add_file_panel_send_button.Text = "Отправить документ";
             this.a_main_screen_main_box_add_file_panel_send_button.UseVisualStyleBackColor = true;
@@ -857,29 +878,32 @@
             // a_main_screen_main_box_add_file_panel_label_text_box
             // 
             this.a_main_screen_main_box_add_file_panel_label_text_box.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.a_main_screen_main_box_add_file_panel_label_text_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_main_box_add_file_panel_label_text_box.Location = new System.Drawing.Point(173, 49);
             this.a_main_screen_main_box_add_file_panel_label_text_box.Margin = new System.Windows.Forms.Padding(4);
             this.a_main_screen_main_box_add_file_panel_label_text_box.Name = "a_main_screen_main_box_add_file_panel_label_text_box";
-            this.a_main_screen_main_box_add_file_panel_label_text_box.Size = new System.Drawing.Size(681, 22);
+            this.a_main_screen_main_box_add_file_panel_label_text_box.Size = new System.Drawing.Size(681, 24);
             this.a_main_screen_main_box_add_file_panel_label_text_box.TabIndex = 2;
             // 
             // a_main_screen_main_box_add_file_panel_file_label
             // 
             this.a_main_screen_main_box_add_file_panel_file_label.AutoSize = true;
+            this.a_main_screen_main_box_add_file_panel_file_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_main_box_add_file_panel_file_label.Location = new System.Drawing.Point(17, 97);
             this.a_main_screen_main_box_add_file_panel_file_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.a_main_screen_main_box_add_file_panel_file_label.Name = "a_main_screen_main_box_add_file_panel_file_label";
-            this.a_main_screen_main_box_add_file_panel_file_label.Size = new System.Drawing.Size(81, 17);
+            this.a_main_screen_main_box_add_file_panel_file_label.Size = new System.Drawing.Size(86, 18);
             this.a_main_screen_main_box_add_file_panel_file_label.TabIndex = 1;
             this.a_main_screen_main_box_add_file_panel_file_label.Text = "Документ: ";
             // 
             // a_main_screen_main_box_add_file_panel_label_label
             // 
             this.a_main_screen_main_box_add_file_panel_label_label.AutoSize = true;
+            this.a_main_screen_main_box_add_file_panel_label_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_main_box_add_file_panel_label_label.Location = new System.Drawing.Point(17, 49);
             this.a_main_screen_main_box_add_file_panel_label_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.a_main_screen_main_box_add_file_panel_label_label.Name = "a_main_screen_main_box_add_file_panel_label_label";
-            this.a_main_screen_main_box_add_file_panel_label_label.Size = new System.Drawing.Size(124, 17);
+            this.a_main_screen_main_box_add_file_panel_label_label.Size = new System.Drawing.Size(131, 18);
             this.a_main_screen_main_box_add_file_panel_label_label.TabIndex = 0;
             this.a_main_screen_main_box_add_file_panel_label_label.Text = "Тема документа: ";
             // 
@@ -895,16 +919,17 @@
             this.a_main_screen_main_box_add_template_panel.Controls.Add(this.a_main_screen_main_box_add_template_panel_name_text_box);
             this.a_main_screen_main_box_add_template_panel.Controls.Add(this.a_main_screen_main_box_add_template_panel_file_label);
             this.a_main_screen_main_box_add_template_panel.Controls.Add(this.a_main_screen_main_box_add_template_panel_name_label);
-            this.a_main_screen_main_box_add_template_panel.Location = new System.Drawing.Point(133, 98);
+            this.a_main_screen_main_box_add_template_panel.Location = new System.Drawing.Point(106, 98);
             this.a_main_screen_main_box_add_template_panel.Margin = new System.Windows.Forms.Padding(4);
             this.a_main_screen_main_box_add_template_panel.Name = "a_main_screen_main_box_add_template_panel";
-            this.a_main_screen_main_box_add_template_panel.Size = new System.Drawing.Size(877, 334);
+            this.a_main_screen_main_box_add_template_panel.Size = new System.Drawing.Size(904, 334);
             this.a_main_screen_main_box_add_template_panel.TabIndex = 7;
             // 
             // a_main_screen_main_box_add_template_panel_info_label
             // 
+            this.a_main_screen_main_box_add_template_panel_info_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_main_box_add_template_panel_info_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            this.a_main_screen_main_box_add_template_panel_info_label.Location = new System.Drawing.Point(21, 277);
+            this.a_main_screen_main_box_add_template_panel_info_label.Location = new System.Drawing.Point(21, 268);
             this.a_main_screen_main_box_add_template_panel_info_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.a_main_screen_main_box_add_template_panel_info_label.Name = "a_main_screen_main_box_add_template_panel_info_label";
             this.a_main_screen_main_box_add_template_panel_info_label.Size = new System.Drawing.Size(833, 22);
@@ -914,11 +939,12 @@
             // a_main_screen_main_box_add_template_panel_file_name_label
             // 
             this.a_main_screen_main_box_add_template_panel_file_name_label.AutoSize = true;
+            this.a_main_screen_main_box_add_template_panel_file_name_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_main_box_add_template_panel_file_name_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            this.a_main_screen_main_box_add_template_panel_file_name_label.Location = new System.Drawing.Point(337, 97);
+            this.a_main_screen_main_box_add_template_panel_file_name_label.Location = new System.Drawing.Point(357, 97);
             this.a_main_screen_main_box_add_template_panel_file_name_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.a_main_screen_main_box_add_template_panel_file_name_label.Name = "a_main_screen_main_box_add_template_panel_file_name_label";
-            this.a_main_screen_main_box_add_template_panel_file_name_label.Size = new System.Drawing.Size(0, 17);
+            this.a_main_screen_main_box_add_template_panel_file_name_label.Size = new System.Drawing.Size(0, 18);
             this.a_main_screen_main_box_add_template_panel_file_name_label.TabIndex = 10;
             // 
             // a_main_screen_main_box_add_template_panel_file_button
@@ -927,10 +953,11 @@
             this.a_main_screen_main_box_add_template_panel_file_button.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.a_main_screen_main_box_add_template_panel_file_button.FlatAppearance.BorderSize = 2;
             this.a_main_screen_main_box_add_template_panel_file_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.a_main_screen_main_box_add_template_panel_file_button.Location = new System.Drawing.Point(173, 91);
+            this.a_main_screen_main_box_add_template_panel_file_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.a_main_screen_main_box_add_template_panel_file_button.Location = new System.Drawing.Point(190, 89);
             this.a_main_screen_main_box_add_template_panel_file_button.Margin = new System.Windows.Forms.Padding(4);
             this.a_main_screen_main_box_add_template_panel_file_button.Name = "a_main_screen_main_box_add_template_panel_file_button";
-            this.a_main_screen_main_box_add_template_panel_file_button.Size = new System.Drawing.Size(156, 28);
+            this.a_main_screen_main_box_add_template_panel_file_button.Size = new System.Drawing.Size(156, 34);
             this.a_main_screen_main_box_add_template_panel_file_button.TabIndex = 7;
             this.a_main_screen_main_box_add_template_panel_file_button.Text = "Выбрать файл";
             this.a_main_screen_main_box_add_template_panel_file_button.UseVisualStyleBackColor = true;
@@ -942,7 +969,7 @@
             this.a_main_screen_main_box_add_template_panel_exit_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.a_main_screen_main_box_add_template_panel_exit_button.FlatAppearance.BorderSize = 0;
             this.a_main_screen_main_box_add_template_panel_exit_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.a_main_screen_main_box_add_template_panel_exit_button.Location = new System.Drawing.Point(841, 4);
+            this.a_main_screen_main_box_add_template_panel_exit_button.Location = new System.Drawing.Point(868, 4);
             this.a_main_screen_main_box_add_template_panel_exit_button.Margin = new System.Windows.Forms.Padding(4);
             this.a_main_screen_main_box_add_template_panel_exit_button.Name = "a_main_screen_main_box_add_template_panel_exit_button";
             this.a_main_screen_main_box_add_template_panel_exit_button.Size = new System.Drawing.Size(29, 27);
@@ -957,10 +984,11 @@
             this.a_main_screen_main_box_add_template_panel_send_button.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.a_main_screen_main_box_add_template_panel_send_button.FlatAppearance.BorderSize = 2;
             this.a_main_screen_main_box_add_template_panel_send_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.a_main_screen_main_box_add_template_panel_send_button.Location = new System.Drawing.Point(345, 303);
+            this.a_main_screen_main_box_add_template_panel_send_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.a_main_screen_main_box_add_template_panel_send_button.Location = new System.Drawing.Point(346, 295);
             this.a_main_screen_main_box_add_template_panel_send_button.Margin = new System.Windows.Forms.Padding(4);
             this.a_main_screen_main_box_add_template_panel_send_button.Name = "a_main_screen_main_box_add_template_panel_send_button";
-            this.a_main_screen_main_box_add_template_panel_send_button.Size = new System.Drawing.Size(219, 28);
+            this.a_main_screen_main_box_add_template_panel_send_button.Size = new System.Drawing.Size(219, 33);
             this.a_main_screen_main_box_add_template_panel_send_button.TabIndex = 5;
             this.a_main_screen_main_box_add_template_panel_send_button.Text = "Отправить шаблон";
             this.a_main_screen_main_box_add_template_panel_send_button.UseVisualStyleBackColor = true;
@@ -969,29 +997,32 @@
             // a_main_screen_main_box_add_template_panel_name_text_box
             // 
             this.a_main_screen_main_box_add_template_panel_name_text_box.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.a_main_screen_main_box_add_template_panel_name_text_box.Location = new System.Drawing.Point(173, 49);
+            this.a_main_screen_main_box_add_template_panel_name_text_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.a_main_screen_main_box_add_template_panel_name_text_box.Location = new System.Drawing.Point(190, 49);
             this.a_main_screen_main_box_add_template_panel_name_text_box.Margin = new System.Windows.Forms.Padding(4);
             this.a_main_screen_main_box_add_template_panel_name_text_box.Name = "a_main_screen_main_box_add_template_panel_name_text_box";
-            this.a_main_screen_main_box_add_template_panel_name_text_box.Size = new System.Drawing.Size(681, 22);
+            this.a_main_screen_main_box_add_template_panel_name_text_box.Size = new System.Drawing.Size(664, 24);
             this.a_main_screen_main_box_add_template_panel_name_text_box.TabIndex = 2;
             // 
             // a_main_screen_main_box_add_template_panel_file_label
             // 
             this.a_main_screen_main_box_add_template_panel_file_label.AutoSize = true;
+            this.a_main_screen_main_box_add_template_panel_file_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_main_box_add_template_panel_file_label.Location = new System.Drawing.Point(17, 97);
             this.a_main_screen_main_box_add_template_panel_file_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.a_main_screen_main_box_add_template_panel_file_label.Name = "a_main_screen_main_box_add_template_panel_file_label";
-            this.a_main_screen_main_box_add_template_panel_file_label.Size = new System.Drawing.Size(144, 17);
+            this.a_main_screen_main_box_add_template_panel_file_label.Size = new System.Drawing.Size(152, 18);
             this.a_main_screen_main_box_add_template_panel_file_label.TabIndex = 1;
             this.a_main_screen_main_box_add_template_panel_file_label.Text = "Документ шаблона: ";
             // 
             // a_main_screen_main_box_add_template_panel_name_label
             // 
             this.a_main_screen_main_box_add_template_panel_name_label.AutoSize = true;
+            this.a_main_screen_main_box_add_template_panel_name_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_main_box_add_template_panel_name_label.Location = new System.Drawing.Point(17, 49);
             this.a_main_screen_main_box_add_template_panel_name_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.a_main_screen_main_box_add_template_panel_name_label.Name = "a_main_screen_main_box_add_template_panel_name_label";
-            this.a_main_screen_main_box_add_template_panel_name_label.Size = new System.Drawing.Size(106, 17);
+            this.a_main_screen_main_box_add_template_panel_name_label.Size = new System.Drawing.Size(112, 18);
             this.a_main_screen_main_box_add_template_panel_name_label.TabIndex = 0;
             this.a_main_screen_main_box_add_template_panel_name_label.Text = "Имя шаблона: ";
             // 
@@ -1001,7 +1032,7 @@
             this.a_dark_background.Location = new System.Drawing.Point(0, 0);
             this.a_dark_background.Margin = new System.Windows.Forms.Padding(4);
             this.a_dark_background.Name = "a_dark_background";
-            this.a_dark_background.Size = new System.Drawing.Size(1144, 526);
+            this.a_dark_background.Size = new System.Drawing.Size(1135, 560);
             this.a_dark_background.TabIndex = 10;
             this.a_dark_background.Visible = false;
             // 
@@ -1011,10 +1042,10 @@
             this.a_main_screen_main_box_chats_mode_interface_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.a_main_screen_main_box_chats_mode_interface_panel.Controls.Add(this.a_main_screen_main_box_chats_mode_interface_panel_send_button);
             this.a_main_screen_main_box_chats_mode_interface_panel.Controls.Add(this.a_main_screen_main_box_chats_mode_interface_panel_text_box);
-            this.a_main_screen_main_box_chats_mode_interface_panel.Location = new System.Drawing.Point(-4, 468);
+            this.a_main_screen_main_box_chats_mode_interface_panel.Location = new System.Drawing.Point(6, 475);
             this.a_main_screen_main_box_chats_mode_interface_panel.Margin = new System.Windows.Forms.Padding(4);
             this.a_main_screen_main_box_chats_mode_interface_panel.Name = "a_main_screen_main_box_chats_mode_interface_panel";
-            this.a_main_screen_main_box_chats_mode_interface_panel.Size = new System.Drawing.Size(1139, 56);
+            this.a_main_screen_main_box_chats_mode_interface_panel.Size = new System.Drawing.Size(1125, 81);
             this.a_main_screen_main_box_chats_mode_interface_panel.TabIndex = 9;
             this.a_main_screen_main_box_chats_mode_interface_panel.Visible = false;
             // 
@@ -1024,7 +1055,7 @@
             this.a_main_screen_main_box_chats_mode_interface_panel_send_button.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.a_main_screen_main_box_chats_mode_interface_panel_send_button.FlatAppearance.BorderSize = 2;
             this.a_main_screen_main_box_chats_mode_interface_panel_send_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.a_main_screen_main_box_chats_mode_interface_panel_send_button.Location = new System.Drawing.Point(1055, 7);
+            this.a_main_screen_main_box_chats_mode_interface_panel_send_button.Location = new System.Drawing.Point(1035, 17);
             this.a_main_screen_main_box_chats_mode_interface_panel_send_button.Margin = new System.Windows.Forms.Padding(4);
             this.a_main_screen_main_box_chats_mode_interface_panel_send_button.Name = "a_main_screen_main_box_chats_mode_interface_panel_send_button";
             this.a_main_screen_main_box_chats_mode_interface_panel_send_button.Size = new System.Drawing.Size(83, 42);
@@ -1032,6 +1063,18 @@
             this.a_main_screen_main_box_chats_mode_interface_panel_send_button.Text = ">";
             this.a_main_screen_main_box_chats_mode_interface_panel_send_button.UseVisualStyleBackColor = true;
             this.a_main_screen_main_box_chats_mode_interface_panel_send_button.Click += new System.EventHandler(this.chats_mode_send_button_click);
+            // 
+            // a_main_screen_main_box_chats_mode_interface_panel_text_box
+            // 
+            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic);
+            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.ForeColor = System.Drawing.Color.Gray;
+            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.Location = new System.Drawing.Point(5, 0);
+            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.Name = "a_main_screen_main_box_chats_mode_interface_panel_text_box";
+            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.PlaceHolderText = null;
+            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.Size = new System.Drawing.Size(1025, 76);
+            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.TabIndex = 0;
+            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.Text = "";
             // 
             // a_main_screen_main_box_add_template_button
             // 
@@ -1049,6 +1092,7 @@
             // 
             this.a_main_screen_main_box_add_template_button_text.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(227)))), ((int)(((byte)(255)))));
             this.a_main_screen_main_box_add_template_button_text.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.a_main_screen_main_box_add_template_button_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_main_box_add_template_button_text.Location = new System.Drawing.Point(0, 0);
             this.a_main_screen_main_box_add_template_button_text.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.a_main_screen_main_box_add_template_button_text.Name = "a_main_screen_main_box_add_template_button_text";
@@ -1073,6 +1117,7 @@
             // 
             this.a_main_screen_main_box_add_news_button_text.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(227)))), ((int)(((byte)(255)))));
             this.a_main_screen_main_box_add_news_button_text.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.a_main_screen_main_box_add_news_button_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_main_box_add_news_button_text.Location = new System.Drawing.Point(-1, -1);
             this.a_main_screen_main_box_add_news_button_text.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.a_main_screen_main_box_add_news_button_text.Name = "a_main_screen_main_box_add_news_button_text";
@@ -1092,8 +1137,19 @@
             this.a_main_screen_main_info_panel.Location = new System.Drawing.Point(183, 63);
             this.a_main_screen_main_info_panel.Margin = new System.Windows.Forms.Padding(4);
             this.a_main_screen_main_info_panel.Name = "a_main_screen_main_info_panel";
-            this.a_main_screen_main_info_panel.Size = new System.Drawing.Size(1140, 150);
+            this.a_main_screen_main_info_panel.Size = new System.Drawing.Size(1146, 109);
             this.a_main_screen_main_info_panel.TabIndex = 3;
+            // 
+            // a_main_screen_main_info_panel_info_text
+            // 
+            this.a_main_screen_main_info_panel_info_text.AutoSize = true;
+            this.a_main_screen_main_info_panel_info_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.a_main_screen_main_info_panel_info_text.ForeColor = System.Drawing.Color.Red;
+            this.a_main_screen_main_info_panel_info_text.Location = new System.Drawing.Point(10, 8);
+            this.a_main_screen_main_info_panel_info_text.Name = "a_main_screen_main_info_panel_info_text";
+            this.a_main_screen_main_info_panel_info_text.Size = new System.Drawing.Size(74, 20);
+            this.a_main_screen_main_info_panel_info_text.TabIndex = 8;
+            this.a_main_screen_main_info_panel_info_text.Text = "Важно:";
             // 
             // a_main_screen_main_info_panel_change_button
             // 
@@ -1102,7 +1158,7 @@
             this.a_main_screen_main_info_panel_change_button.FlatAppearance.BorderSize = 0;
             this.a_main_screen_main_info_panel_change_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.a_main_screen_main_info_panel_change_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.a_main_screen_main_info_panel_change_button.Location = new System.Drawing.Point(1100, 4);
+            this.a_main_screen_main_info_panel_change_button.Location = new System.Drawing.Point(1106, 4);
             this.a_main_screen_main_info_panel_change_button.Margin = new System.Windows.Forms.Padding(4);
             this.a_main_screen_main_info_panel_change_button.Name = "a_main_screen_main_info_panel_change_button";
             this.a_main_screen_main_info_panel_change_button.Size = new System.Drawing.Size(33, 31);
@@ -1115,12 +1171,12 @@
             // a_main_screen_main_info_panel_text
             // 
             this.a_main_screen_main_info_panel_text.AutoSize = true;
-            this.a_main_screen_main_info_panel_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.a_main_screen_main_info_panel_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_main_info_panel_text.Location = new System.Drawing.Point(10, 30);
             this.a_main_screen_main_info_panel_text.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.a_main_screen_main_info_panel_text.MaximumSize = new System.Drawing.Size(1103, 200);
             this.a_main_screen_main_info_panel_text.Name = "a_main_screen_main_info_panel_text";
-            this.a_main_screen_main_info_panel_text.Size = new System.Drawing.Size(1068, 25);
+            this.a_main_screen_main_info_panel_text.Size = new System.Drawing.Size(1043, 24);
             this.a_main_screen_main_info_panel_text.TabIndex = 0;
             this.a_main_screen_main_info_panel_text.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor in" +
     "cididunt ut labore et dolore magna aliqua. ";
@@ -1152,7 +1208,7 @@
             // a_main_screen_top_panel_button3_text
             // 
             this.a_main_screen_top_panel_button3_text.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.a_main_screen_top_panel_button3_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.a_main_screen_top_panel_button3_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_top_panel_button3_text.ForeColor = System.Drawing.Color.Black;
             this.a_main_screen_top_panel_button3_text.Location = new System.Drawing.Point(0, 0);
             this.a_main_screen_top_panel_button3_text.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -1177,7 +1233,7 @@
             // a_main_screen_top_panel_button2_text
             // 
             this.a_main_screen_top_panel_button2_text.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.a_main_screen_top_panel_button2_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.a_main_screen_top_panel_button2_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_top_panel_button2_text.ForeColor = System.Drawing.Color.Black;
             this.a_main_screen_top_panel_button2_text.Location = new System.Drawing.Point(0, -1);
             this.a_main_screen_top_panel_button2_text.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -1202,7 +1258,7 @@
             // a_main_screen_top_panel_button1_text
             // 
             this.a_main_screen_top_panel_button1_text.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.a_main_screen_top_panel_button1_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.a_main_screen_top_panel_button1_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_top_panel_button1_text.ForeColor = System.Drawing.Color.Black;
             this.a_main_screen_top_panel_button1_text.Location = new System.Drawing.Point(0, 0);
             this.a_main_screen_top_panel_button1_text.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -1230,6 +1286,37 @@
             this.a_main_screen_left_panel_box.Size = new System.Drawing.Size(183, 738);
             this.a_main_screen_left_panel_box.TabIndex = 1;
             // 
+            // a_main_screen_left_panel_label_emli_box
+            // 
+            this.a_main_screen_left_panel_label_emli_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.a_main_screen_left_panel_label_emli_box.Location = new System.Drawing.Point(15, 300);
+            this.a_main_screen_left_panel_label_emli_box.Name = "a_main_screen_left_panel_label_emli_box";
+            this.a_main_screen_left_panel_label_emli_box.Size = new System.Drawing.Size(150, 20);
+            this.a_main_screen_left_panel_label_emli_box.TabIndex = 0;
+            this.a_main_screen_left_panel_label_emli_box.Text = "Счетчик ЭМЛиков";
+            this.a_main_screen_left_panel_label_emli_box.Visible = false;
+            // 
+            // a_main_screen_left_panel_progress_emli_box
+            // 
+            this.a_main_screen_left_panel_progress_emli_box.Location = new System.Drawing.Point(15, 330);
+            this.a_main_screen_left_panel_progress_emli_box.Name = "a_main_screen_left_panel_progress_emli_box";
+            this.a_main_screen_left_panel_progress_emli_box.Size = new System.Drawing.Size(150, 23);
+            this.a_main_screen_left_panel_progress_emli_box.TabIndex = 0;
+            this.a_main_screen_left_panel_progress_emli_box.Visible = false;
+            // 
+            // a_main_screen_left_panel_logo_emli_box
+            // 
+            this.a_main_screen_left_panel_logo_emli_box.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.a_main_screen_left_panel_logo_emli_box.Image = ((System.Drawing.Image)(resources.GetObject("a_main_screen_left_panel_logo_emli_box.Image")));
+            this.a_main_screen_left_panel_logo_emli_box.InitialImage = ((System.Drawing.Image)(resources.GetObject("a_main_screen_left_panel_logo_emli_box.InitialImage")));
+            this.a_main_screen_left_panel_logo_emli_box.Location = new System.Drawing.Point(15, 370);
+            this.a_main_screen_left_panel_logo_emli_box.Name = "a_main_screen_left_panel_logo_emli_box";
+            this.a_main_screen_left_panel_logo_emli_box.Size = new System.Drawing.Size(150, 90);
+            this.a_main_screen_left_panel_logo_emli_box.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.a_main_screen_left_panel_logo_emli_box.TabIndex = 0;
+            this.a_main_screen_left_panel_logo_emli_box.TabStop = false;
+            this.a_main_screen_left_panel_logo_emli_box.Click += new System.EventHandler(this.a_main_screen_left_panel_logo_emli_box_Click);
+            // 
             // a_main_screen_left_panel_logo_box
             // 
             this.a_main_screen_left_panel_logo_box.Image = ((System.Drawing.Image)(resources.GetObject("a_main_screen_left_panel_logo_box.Image")));
@@ -1255,12 +1342,14 @@
             // 
             this.a_main_screen_left_panel_change_image_label.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.a_main_screen_left_panel_change_image_label.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.a_main_screen_left_panel_change_image_label.Location = new System.Drawing.Point(37, 81);
+            this.a_main_screen_left_panel_change_image_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.a_main_screen_left_panel_change_image_label.Location = new System.Drawing.Point(14, 81);
             this.a_main_screen_left_panel_change_image_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.a_main_screen_left_panel_change_image_label.Name = "a_main_screen_left_panel_change_image_label";
-            this.a_main_screen_left_panel_change_image_label.Size = new System.Drawing.Size(113, 20);
+            this.a_main_screen_left_panel_change_image_label.Size = new System.Drawing.Size(150, 35);
             this.a_main_screen_left_panel_change_image_label.TabIndex = 4;
             this.a_main_screen_left_panel_change_image_label.Text = "Сменить фото";
+            this.a_main_screen_left_panel_change_image_label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.a_main_screen_left_panel_change_image_label.Visible = false;
             // 
             // a_main_screen_left_panel_picture
@@ -1299,6 +1388,7 @@
             // a_main_screen_left_panel_time
             // 
             this.a_main_screen_left_panel_time.AutoEllipsis = true;
+            this.a_main_screen_left_panel_time.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_left_panel_time.Location = new System.Drawing.Point(-1, 4);
             this.a_main_screen_left_panel_time.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.a_main_screen_left_panel_time.Name = "a_main_screen_left_panel_time";
@@ -1329,10 +1419,11 @@
             // a_main_screen_left_panel_name
             // 
             this.a_main_screen_left_panel_name.AutoEllipsis = true;
-            this.a_main_screen_left_panel_name.Location = new System.Drawing.Point(-3, 12);
+            this.a_main_screen_left_panel_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.a_main_screen_left_panel_name.Location = new System.Drawing.Point(-3, 4);
             this.a_main_screen_left_panel_name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.a_main_screen_left_panel_name.Name = "a_main_screen_left_panel_name";
-            this.a_main_screen_left_panel_name.Size = new System.Drawing.Size(187, 20);
+            this.a_main_screen_left_panel_name.Size = new System.Drawing.Size(187, 28);
             this.a_main_screen_left_panel_name.TabIndex = 0;
             this.a_main_screen_left_panel_name.Text = "<Имя>";
             this.a_main_screen_left_panel_name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1355,57 +1446,6 @@
             this.a_send_template_dialog.DefaultExt = "doc";
             this.a_send_template_dialog.FileName = "a_selected_file";
             this.a_send_template_dialog.FileOk += new System.ComponentModel.CancelEventHandler(this.a_select_template_set);
-            // 
-            // a_main_screen_main_info_panel_info_text
-            // 
-            this.a_main_screen_main_info_panel_info_text.AutoSize = true;
-            this.a_main_screen_main_info_panel_info_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.a_main_screen_main_info_panel_info_text.ForeColor = System.Drawing.Color.Red;
-            this.a_main_screen_main_info_panel_info_text.Location = new System.Drawing.Point(10, 8);
-            this.a_main_screen_main_info_panel_info_text.Name = "a_main_screen_main_info_panel_info_text";
-            this.a_main_screen_main_info_panel_info_text.Size = new System.Drawing.Size(74, 20);
-            this.a_main_screen_main_info_panel_info_text.TabIndex = 8;
-            this.a_main_screen_main_info_panel_info_text.Text = "Важно:";
-            // 
-            // a_main_screen_left_panel_logo_emli_box
-            // 
-            this.a_main_screen_left_panel_logo_emli_box.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.a_main_screen_left_panel_logo_emli_box.Image = ((System.Drawing.Image)(resources.GetObject("a_main_screen_left_panel_logo_emli_box.Image")));
-            this.a_main_screen_left_panel_logo_emli_box.InitialImage = ((System.Drawing.Image)(resources.GetObject("a_main_screen_left_panel_logo_emli_box.InitialImage")));
-            this.a_main_screen_left_panel_logo_emli_box.Location = new System.Drawing.Point(15, 370);
-            this.a_main_screen_left_panel_logo_emli_box.Name = "a_main_screen_left_panel_logo_emli_box";
-            this.a_main_screen_left_panel_logo_emli_box.Size = new System.Drawing.Size(150, 90);
-            this.a_main_screen_left_panel_logo_emli_box.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.a_main_screen_left_panel_logo_emli_box.TabIndex = 0;
-            this.a_main_screen_left_panel_logo_emli_box.TabStop = false;
-            this.a_main_screen_left_panel_logo_emli_box.Click += new System.EventHandler(this.a_main_screen_left_panel_logo_emli_box_Click);
-            // 
-            // a_main_screen_left_panel_progress_emli_box
-            // 
-            this.a_main_screen_left_panel_progress_emli_box.Location = new System.Drawing.Point(15, 330);
-            this.a_main_screen_left_panel_progress_emli_box.Name = "a_main_screen_left_panel_progress_emli_box";
-            this.a_main_screen_left_panel_progress_emli_box.Size = new System.Drawing.Size(150, 23);
-            this.a_main_screen_left_panel_progress_emli_box.TabIndex = 0;
-            this.a_main_screen_left_panel_progress_emli_box.Visible = false;
-            // 
-            // a_main_screen_left_panel_label_emli_box
-            // 
-            this.a_main_screen_left_panel_label_emli_box.Location = new System.Drawing.Point(15, 300);
-            this.a_main_screen_left_panel_label_emli_box.Name = "a_main_screen_left_panel_label_emli_box";
-            this.a_main_screen_left_panel_label_emli_box.Size = new System.Drawing.Size(150, 20);
-            this.a_main_screen_left_panel_label_emli_box.TabIndex = 0;
-            this.a_main_screen_left_panel_label_emli_box.Text = "Счетчик ЭМЛиков";
-            this.a_main_screen_left_panel_label_emli_box.Visible = false;
-            // 
-            // a_main_screen_main_box_chats_mode_interface_panel_text_box
-            // 
-            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.Location = new System.Drawing.Point(5, 0);
-            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.Name = "a_main_screen_main_box_chats_mode_interface_panel_text_box";
-            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.PlaceHolderText = null;
-            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.Size = new System.Drawing.Size(1043, 48);
-            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.TabIndex = 0;
-            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.Text = "";
             // 
             // main_form
             // 
@@ -1454,12 +1494,12 @@
             this.a_main_screen_top_panel_button2.ResumeLayout(false);
             this.a_main_screen_top_panel_button1.ResumeLayout(false);
             this.a_main_screen_left_panel_box.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.a_main_screen_left_panel_logo_emli_box)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.a_main_screen_left_panel_logo_box)).EndInit();
             this.a_main_screen_left_panel_picture_box.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.a_main_screen_left_panel_picture)).EndInit();
             this.a_main_screen_left_panel_time_box.ResumeLayout(false);
             this.a_main_screen_left_panel_name_box.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.a_main_screen_left_panel_logo_emli_box)).EndInit();
             this.ResumeLayout(false);
 
         }
