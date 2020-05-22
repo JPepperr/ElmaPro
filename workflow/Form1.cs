@@ -31,6 +31,7 @@ namespace workflow
         {
             InitializeComponent();
             a_main_screen_main_box_chats_mode_interface_panel_text_box.PlaceHolderText = "Введите сообщение...";
+            User.set_photo(Directory.GetCurrentDirectory() + "\\profile_photo.jpg", this);
         }
 
         public void formSetter()
@@ -92,7 +93,22 @@ namespace workflow
             string password = this.a_sign_in_password_text_box.Text;
             string login = this.a_sign_in_login_text_box.Text;
 
-            if(Server.check_user_enter(login, password).Item1 == true)
+            char[] forbittenSymbols = { '\\', '/', ':', '*', '?', '"', '<', '>', '|', '.', ',', '(', ')'};
+
+            if (login.IndexOfAny(forbittenSymbols) != -1)
+            {
+                a_sign_in_info_box.ForeColor = Color.Red;
+                a_sign_in_info_box.Text = "Нельзя войти в систему c login, содержащим спец. символы";
+                return;
+            }
+
+            if (login.Length == 0 || password.Length == 0)
+            {
+                a_sign_up_info_box.ForeColor = Color.Red;
+                a_sign_up_info_box.Text = "Некоторые поля не заполнены";
+            }
+
+            if (Server.check_user_enter(login, password).Item1 == true)
             {
                 this.a_sign_in_forgot_password_button.Visible = false; //Убираем кнопку 'забыли пароль'
                 this.a_sign_in_info_box.Text = ""; //Убираем окно ошибки
@@ -146,7 +162,22 @@ namespace workflow
             string login = this.a_sign_up_login_text_box.Text;
             string password = this.a_sign_up_password_text_box.Text;
 
-            if(Server.new_user(login, password).Item1)
+            char[] forbittenSymbols = { '\\', '/', ':', '*', '?', '"', '<', '>', '|', '.', ',', '(', ')' };
+
+            if (login.IndexOfAny(forbittenSymbols) != -1)
+            {
+                a_sign_up_info_box.ForeColor = Color.Red;
+                a_sign_up_info_box.Text = "Нельзя зарегистрироваться c login, содержащим спец. символы";
+                return;
+            }
+
+            if (login.Length == 0 || password.Length == 0) 
+            {
+                a_sign_up_info_box.ForeColor = Color.Red;
+                a_sign_up_info_box.Text = "Некоторые поля не заполнены";
+            }
+
+            if (Server.new_user(login, password).Item1)
             {
                 this.a_sign_up_info_box.Text = ""; //Убираем окно ошибки
                 Console.WriteLine("sign up > " + "password : " + password + " login : " + login);
@@ -175,10 +206,8 @@ namespace workflow
 
         private void a_main_screen_top_panel_button1_text_Click(object sender, EventArgs e)
         {
-
+            
         }
-
-
 
 
         private void a_forgot_password_send_button_Click(object sender, EventArgs e)
@@ -210,7 +239,13 @@ namespace workflow
         {
             stopUpdatingMode = false;
             Console.WriteLine("Image set by user : " + this.a_change_image_dialog.FileName);
-            User.set_photo(this.a_change_image_dialog.FileName, this);
+            if (File.Exists(Directory.GetCurrentDirectory() + "\\profile_photo.jpg"))
+            {
+                User.set_photo(Directory.GetCurrentDirectory() + "\\profile_plug.jpg", this);
+                File.Delete(Directory.GetCurrentDirectory() + "\\profile_photo.jpg");
+            }
+            File.Copy(this.a_change_image_dialog.FileName, Directory.GetCurrentDirectory() + "\\profile_photo.jpg");
+            User.set_photo(Directory.GetCurrentDirectory() + "\\profile_photo.jpg", this);
         }
 
         private void a_image_changed_by_user(object sender, EventArgs e)
@@ -236,6 +271,7 @@ namespace workflow
             //a_main_screen_top_panel_button2.BackColor = Color.FromArgb(255, 255, 255);
             //a_main_screen_top_panel_button3.BackColor = Color.FromArgb(255, 255, 255);
             screenConstructor.changeMainScreenEnvironment("main", this);
+            //a_main_screen_top_panel_button1.Paint += new System.Windows.Forms.PaintEventHandler(Panel1_paint);
             //a_main_screen_top_panel_button1_text.ForeColor = Color.FromArgb(255, 255, 255);
         }
 
@@ -273,7 +309,41 @@ namespace workflow
             string label_of_news = a_main_screen_main_box_add_news_panel_news_label_text_box.Text;
             string content_of_news = a_main_screen_main_box_add_news_panel_news_content_text_box.Text;
 
-            if(label_of_news != "" && content_of_news != "")
+            const int maxLabelLength = 25;
+
+            if (label_of_news.Length > maxLabelLength)
+            {
+                a_main_screen_main_box_add_news_panel_info_label.ForeColor = Color.Red;
+                a_main_screen_main_box_add_news_panel_info_label.Text = "Длина заголовка новости не может превышать " +
+                    maxLabelLength.ToString() + " символов";
+                return;
+            }
+
+            const int maxStringLength = 40;
+            const int maxCntStrings = 5;
+            int start_of_last_string = 0;
+            int cnt_of_strings = 1;
+            bool norm = true;
+            for (int i = 0; i < content_of_news.Length; i++)
+            {
+                if (content_of_news[i] == '\n')
+                {
+                    if (i - start_of_last_string > maxStringLength) norm = false;
+                    start_of_last_string = i + 1;
+                    cnt_of_strings++;
+                }
+            }
+
+            if (content_of_news.Length - start_of_last_string > maxStringLength) norm = false;
+
+            if (!norm || cnt_of_strings > maxCntStrings) {
+                a_main_screen_main_box_add_news_panel_info_label.ForeColor = Color.Red;
+                a_main_screen_main_box_add_news_panel_info_label.Text = "Новость должна содержать не более " + maxCntStrings.ToString() +
+                "ти строк, каждая на длиннее " + maxStringLength.ToString() + "ка символов";
+                return;
+            }
+
+            if (label_of_news != "" && content_of_news != "")
             {
                 Server.addNews(label_of_news, content_of_news);
 
@@ -620,7 +690,7 @@ namespace workflow
             a_main_screen_left_panel_progress_emli_box.Value = Math.Min(a_main_screen_left_panel_progress_emli_box.Value + 1, 100);
             if (a_main_screen_left_panel_progress_emli_box.Value == 100)
             {
-                a_main_screen_left_panel_label_emli_box.Text = "Вы настоящий ";
+                a_main_screen_left_panel_label_emli_box.Text = "True Jedi";
             }
             else
             {

@@ -481,11 +481,13 @@ namespace workflow
 
         public void set_photo(string photo_src, workflow.main_form connectForm)
         {
-            int width = (int)connectForm.a_main_screen_left_panel_picture_box.Size.Width;
+            if (connectForm.a_main_screen_left_panel_picture.Image != null)
+                connectForm.a_main_screen_left_panel_picture.Image.Dispose();
+            var width = (int)connectForm.a_main_screen_left_panel_picture_box.Size.Width;
             var height = (int)connectForm.a_main_screen_left_panel_picture_box.Size.Height;
-            Bitmap original = new Bitmap(connectForm.a_change_image_dialog.FileName);
+            Bitmap original = new Bitmap(photo_src);
             connectForm.a_main_screen_left_panel_picture.Image = new Bitmap(original, width, height);
-            //Server.update_user_photo();
+            original.Dispose();
         }
 
         public void set_name(string name, workflow.main_form connectForm)
@@ -862,14 +864,30 @@ namespace workflow
         public static void resetDocumentsLeftPanelButtonsColors(string labelToSetActive, workflow.main_form connectForm)
         {
             main_form.User.systemData["a_send_message_button"].ForeColor = System.Drawing.Color.FromArgb(51, 153, 255);
-            main_form.User.systemData["a_send_message_button"].BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
+            main_form.User.systemData["a_send_message_button"].BackColor = Color.FromArgb(235, 240, 245);
             main_form.User.systemData["a_incoming_messages_button"].ForeColor = System.Drawing.Color.FromArgb(51, 153, 255);
-            main_form.User.systemData["a_incoming_messages_button"].BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
+            main_form.User.systemData["a_incoming_messages_button"].BackColor = Color.FromArgb(235, 240, 245);
             main_form.User.systemData["a_document_templates_button"].ForeColor = System.Drawing.Color.FromArgb(51, 153, 255);
-            main_form.User.systemData["a_document_templates_button"].BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
+            main_form.User.systemData["a_document_templates_button"].BackColor = Color.FromArgb(235, 240, 245);
+            connectForm.a_main_screen_left_panel_box_line1.Visible = false;
+            connectForm.a_main_screen_left_panel_box_line2.Visible = false;
+            connectForm.a_main_screen_left_panel_box_line3.Visible = false;
 
             main_form.User.systemData[labelToSetActive].ForeColor = System.Drawing.Color.FromArgb(51, 153, 204);
-            main_form.User.systemData[labelToSetActive].BackColor = System.Drawing.Color.FromArgb(235, 240, 245);
+            main_form.User.systemData[labelToSetActive].BackColor = Color.White;
+
+            switch (labelToSetActive)
+            {
+                case "a_send_message_button" :
+                    connectForm.a_main_screen_left_panel_box_line1.Visible = true;
+                    break;
+                case "a_incoming_messages_button":
+                    connectForm.a_main_screen_left_panel_box_line2.Visible = true;
+                    break;
+                case "a_document_templates_button":
+                    connectForm.a_main_screen_left_panel_box_line3.Visible = true;
+                    break;
+            }
         }
 
         public static void resetChatsLeftPanelButtonsColors(workflow.main_form connectForm)
@@ -886,6 +904,10 @@ namespace workflow
 
         public static void cleanMainScreenEnvironment(workflow.main_form connectForm, bool clearLeft = true)
         {
+            connectForm.a_main_screen_left_panel_box_line1.Visible = false;
+            connectForm.a_main_screen_left_panel_box_line2.Visible = false;
+            connectForm.a_main_screen_left_panel_box_line3.Visible = false;
+
             connectForm.a_main_screen_left_panel_logo_box.Visible = false;
             connectForm.a_main_screen_left_panel_logo_emli_box.Visible = false;
             connectForm.a_main_screen_left_panel_progress_emli_box.Visible = false;
@@ -1238,8 +1260,9 @@ namespace workflow
 
                     deleteNews.FlatStyle = FlatStyle.Flat;
                     deleteNews.FlatAppearance.BorderSize = 0;
-                    deleteNews.Text = "x";
-                    widthOfElementIncide = 22;
+                    deleteNews.Text = "Удалить";
+                    deleteNews.BackColor = Color.Pink;
+                    widthOfElementIncide = 60;
                     heightOfElementIncide = 22;
                     deleteNews.Size = new Size(widthOfElementIncide, heightOfElementIncide);
                     deleteNews.Location = new Point(buttonBox.Size.Width / 2 - widthOfElementIncide / 2, element.Size.Height / 2 - heightOfElementIncide / 2);
@@ -1261,7 +1284,8 @@ namespace workflow
                     content.Size = new Size(widthOfElementIncide, heightOfElementIncide);
                     content.Location = new Point(xPositionIncide, 0);
                     content.BorderStyle = BorderStyle.FixedSingle;
-                    content.TextAlign = ContentAlignment.MiddleCenter;
+                    if (num == 0) content.TextAlign = ContentAlignment.MiddleCenter;
+                    else content.TextAlign = ContentAlignment.MiddleLeft;
                     xPositionIncide += widthOfElementIncide - 1;
                 }
 
@@ -1333,7 +1357,8 @@ namespace workflow
                 author.Size = new Size(widthOfElementIncide, heightOfElementIncide);
                 author.Location = new Point(xPositionIncide, 0);
                 author.BorderStyle = BorderStyle.FixedSingle;
-                author.TextAlign = ContentAlignment.MiddleCenter;
+                if (num == 0) author.TextAlign = ContentAlignment.MiddleCenter;
+                else author.TextAlign = ContentAlignment.MiddleLeft;
                 xPositionIncide += widthOfElementIncide - 1;
 
                 Label label = new Label();
@@ -1344,7 +1369,8 @@ namespace workflow
                 label.Size = new Size(widthOfElementIncide, heightOfElementIncide);
                 label.Location = new Point(xPositionIncide, 0);
                 label.BorderStyle = BorderStyle.FixedSingle;
-                label.TextAlign = ContentAlignment.MiddleCenter;
+                if (num == 0) label.TextAlign = ContentAlignment.MiddleCenter;
+                else label.TextAlign = ContentAlignment.MiddleLeft;
                 xPositionIncide += widthOfElementIncide - 1;
 
                 Panel buttonBox = new Panel();
@@ -1358,8 +1384,9 @@ namespace workflow
                 Button readDocument = new Button();
                 readDocument.FlatStyle = FlatStyle.Flat;
                 readDocument.FlatAppearance.BorderSize = 0;
-                readDocument.Text = ">";
-                widthOfElementIncide = 22;
+                readDocument.Text = "Скачать";
+                readDocument.BackColor = Color.LightGreen;
+                widthOfElementIncide = 60;
                 heightOfElementIncide = 22;
                 readDocument.Size = new Size(widthOfElementIncide, heightOfElementIncide);
                 readDocument.Location = new Point(buttonBox.Size.Width / 2 - widthOfElementIncide / 2, element.Size.Height / 2 - heightOfElementIncide / 2);
@@ -1370,8 +1397,8 @@ namespace workflow
 
                 Label readDocumentText = new Label();
                 readDocumentText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-                readDocumentText.Text = "Скачать";
-                widthOfElementIncide = 60;
+                readDocumentText.Text = "Действия";
+                widthOfElementIncide = 70;
                 heightOfElementIncide = 22;
                 readDocumentText.Size = new Size(widthOfElementIncide, heightOfElementIncide);
                 readDocumentText.Location = new Point(buttonBox.Size.Width / 2 - widthOfElementIncide / 2, element.Size.Height / 2 - heightOfElementIncide / 3);
@@ -1439,7 +1466,8 @@ namespace workflow
                 author.Size = new Size(widthOfElementIncide, heightOfElementIncide);
                 author.Location = new Point(xPositionIncide, 0);
                 author.BorderStyle = BorderStyle.FixedSingle;
-                author.TextAlign = ContentAlignment.MiddleCenter;
+                if (num == 0) author.TextAlign = ContentAlignment.MiddleCenter;
+                else author.TextAlign = ContentAlignment.MiddleLeft;
                 xPositionIncide += widthOfElementIncide - 1;
 
                 Label name = new Label();
@@ -1450,7 +1478,8 @@ namespace workflow
                 name.Size = new Size(widthOfElementIncide, heightOfElementIncide);
                 name.Location = new Point(xPositionIncide, 0);
                 name.BorderStyle = BorderStyle.FixedSingle;
-                name.TextAlign = ContentAlignment.MiddleCenter;
+                if (num == 0) name.TextAlign = ContentAlignment.MiddleCenter;
+                else name.TextAlign = ContentAlignment.MiddleLeft;
                 xPositionIncide += widthOfElementIncide - 1;
 
                 Panel buttonBox = new Panel();
@@ -1474,8 +1503,9 @@ namespace workflow
 
                     downloadTemplate.FlatStyle = FlatStyle.Flat;
                     downloadTemplate.FlatAppearance.BorderSize = 0;
-                    downloadTemplate.Text = ">";
-                    widthOfElementIncide = 22;
+                    downloadTemplate.Text = "Скачать";
+                    downloadTemplate.BackColor = Color.LightGreen;
+                    widthOfElementIncide = 60;
                     heightOfElementIncide = 22;
                     downloadTemplate.Size = new Size(widthOfElementIncide, heightOfElementIncide);
                     downloadTemplate.Location = new Point(buttonBox.Size.Width / 2 - widthOfElementIncide / 2, element.Size.Height / 2 - heightOfElementIncide / 2);
@@ -1497,8 +1527,9 @@ namespace workflow
 
                     deleteTemplate.FlatStyle = FlatStyle.Flat;
                     deleteTemplate.FlatAppearance.BorderSize = 0;
-                    deleteTemplate.Text = "x";
-                    widthOfElementIncide = 22;
+                    deleteTemplate.Text = "Удалить";
+                    deleteTemplate.BackColor = Color.Pink;
+                    widthOfElementIncide = 60;
                     heightOfElementIncide = 22;
                     deleteTemplate.Size = new Size(widthOfElementIncide, heightOfElementIncide);
                     deleteTemplate.Location = new Point(deleteButtonBox.Size.Width / 2 - widthOfElementIncide / 2, element.Size.Height / 2 - heightOfElementIncide / 2);
@@ -1524,8 +1555,9 @@ namespace workflow
 
                     downloadTemplate.FlatStyle = FlatStyle.Flat;
                     downloadTemplate.FlatAppearance.BorderSize = 0;
-                    downloadTemplate.Text = ">";
-                    widthOfElementIncide = 22;
+                    downloadTemplate.Text = "Скачать";
+                    downloadTemplate.BackColor = Color.LightGreen;
+                    widthOfElementIncide = 60;
                     heightOfElementIncide = 22;
                     downloadTemplate.Size = new Size(widthOfElementIncide, heightOfElementIncide);
                     downloadTemplate.Location = new Point(buttonBox.Size.Width / 2 - widthOfElementIncide / 2, element.Size.Height / 2 - heightOfElementIncide / 2);
@@ -1537,7 +1569,7 @@ namespace workflow
 
                 Label downloadTemplateText = new Label();
                 downloadTemplateText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-                downloadTemplateText.Text = "Действие";
+                downloadTemplateText.Text = "Действия";
                 widthOfElementIncide = 70;
                 heightOfElementIncide = 22;
                 downloadTemplateText.Size = new Size(widthOfElementIncide, heightOfElementIncide);

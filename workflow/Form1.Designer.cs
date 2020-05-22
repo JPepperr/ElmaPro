@@ -53,6 +53,10 @@
             this.a_forgot_password_login_label = new System.Windows.Forms.Label();
             this.a_forgot_password_login_text_box = new System.Windows.Forms.TextBox();
             this.a_main_screen_box = new System.Windows.Forms.Panel();
+            this.an_active_line = new System.Windows.Forms.Panel();
+            this.a_main_screen_left_panel_box_line3 = new System.Windows.Forms.Panel();
+            this.a_main_screen_left_panel_box_line2 = new System.Windows.Forms.Panel();
+            this.a_main_screen_left_panel_box_line1 = new System.Windows.Forms.Panel();
             this.a_exit_user_button = new System.Windows.Forms.Label();
             this.a_main_screen_main_box = new System.Windows.Forms.Panel();
             this.a_conversation_options_panel = new System.Windows.Forms.Panel();
@@ -426,6 +430,10 @@
             // a_main_screen_box
             // 
             this.a_main_screen_box.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.a_main_screen_box.Controls.Add(this.an_active_line);
+            this.a_main_screen_box.Controls.Add(this.a_main_screen_left_panel_box_line3);
+            this.a_main_screen_box.Controls.Add(this.a_main_screen_left_panel_box_line2);
+            this.a_main_screen_box.Controls.Add(this.a_main_screen_left_panel_box_line1);
             this.a_main_screen_box.Controls.Add(this.a_exit_user_button);
             this.a_main_screen_box.Controls.Add(this.a_main_screen_main_box);
             this.a_main_screen_box.Controls.Add(this.a_main_screen_main_info_panel);
@@ -436,6 +444,38 @@
             this.a_main_screen_box.Name = "a_main_screen_box";
             this.a_main_screen_box.Size = new System.Drawing.Size(1335, 743);
             this.a_main_screen_box.TabIndex = 3;
+            // 
+            // an_active_line
+            // 
+            this.an_active_line.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            this.an_active_line.Location = new System.Drawing.Point(185, 63);
+            this.an_active_line.Name = "an_active_line";
+            this.an_active_line.Size = new System.Drawing.Size(1140, 2);
+            this.an_active_line.TabIndex = 2;
+            // 
+            // a_main_screen_left_panel_box_line3
+            // 
+            this.a_main_screen_left_panel_box_line3.BackColor = System.Drawing.Color.White;
+            this.a_main_screen_left_panel_box_line3.Location = new System.Drawing.Point(182, 576);
+            this.a_main_screen_left_panel_box_line3.Name = "a_main_screen_left_panel_box_line3";
+            this.a_main_screen_left_panel_box_line3.Size = new System.Drawing.Size(2, 159);
+            this.a_main_screen_left_panel_box_line3.TabIndex = 0;
+            // 
+            // a_main_screen_left_panel_box_line2
+            // 
+            this.a_main_screen_left_panel_box_line2.BackColor = System.Drawing.Color.White;
+            this.a_main_screen_left_panel_box_line2.Location = new System.Drawing.Point(182, 417);
+            this.a_main_screen_left_panel_box_line2.Name = "a_main_screen_left_panel_box_line2";
+            this.a_main_screen_left_panel_box_line2.Size = new System.Drawing.Size(2, 158);
+            this.a_main_screen_left_panel_box_line2.TabIndex = 0;
+            // 
+            // a_main_screen_left_panel_box_line1
+            // 
+            this.a_main_screen_left_panel_box_line1.BackColor = System.Drawing.Color.White;
+            this.a_main_screen_left_panel_box_line1.Location = new System.Drawing.Point(182, 260);
+            this.a_main_screen_left_panel_box_line1.Name = "a_main_screen_left_panel_box_line1";
+            this.a_main_screen_left_panel_box_line1.Size = new System.Drawing.Size(2, 156);
+            this.a_main_screen_left_panel_box_line1.TabIndex = 0;
             // 
             // a_exit_user_button
             // 
@@ -680,10 +720,10 @@
             // 
             this.a_main_screen_main_box_add_news_panel_info_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_main_screen_main_box_add_news_panel_info_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            this.a_main_screen_main_box_add_news_panel_info_label.Location = new System.Drawing.Point(291, 279);
+            this.a_main_screen_main_box_add_news_panel_info_label.Location = new System.Drawing.Point(56, 279);
             this.a_main_screen_main_box_add_news_panel_info_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.a_main_screen_main_box_add_news_panel_info_label.Name = "a_main_screen_main_box_add_news_panel_info_label";
-            this.a_main_screen_main_box_add_news_panel_info_label.Size = new System.Drawing.Size(336, 20);
+            this.a_main_screen_main_box_add_news_panel_info_label.Size = new System.Drawing.Size(803, 20);
             this.a_main_screen_main_box_add_news_panel_info_label.TabIndex = 12;
             this.a_main_screen_main_box_add_news_panel_info_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -1051,17 +1091,20 @@
             // 
             // a_main_screen_main_box_chats_mode_interface_panel_send_button
             // 
+            this.a_main_screen_main_box_chats_mode_interface_panel_send_button.BackColor = System.Drawing.Color.White;
+            this.a_main_screen_main_box_chats_mode_interface_panel_send_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("a_main_screen_main_box_chats_mode_interface_panel_send_button.BackgroundImage")));
+            this.a_main_screen_main_box_chats_mode_interface_panel_send_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.a_main_screen_main_box_chats_mode_interface_panel_send_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.a_main_screen_main_box_chats_mode_interface_panel_send_button.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.a_main_screen_main_box_chats_mode_interface_panel_send_button.FlatAppearance.BorderSize = 2;
             this.a_main_screen_main_box_chats_mode_interface_panel_send_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.a_main_screen_main_box_chats_mode_interface_panel_send_button.Location = new System.Drawing.Point(1035, 17);
+            this.a_main_screen_main_box_chats_mode_interface_panel_send_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.a_main_screen_main_box_chats_mode_interface_panel_send_button.Location = new System.Drawing.Point(1058, 17);
             this.a_main_screen_main_box_chats_mode_interface_panel_send_button.Margin = new System.Windows.Forms.Padding(4);
             this.a_main_screen_main_box_chats_mode_interface_panel_send_button.Name = "a_main_screen_main_box_chats_mode_interface_panel_send_button";
-            this.a_main_screen_main_box_chats_mode_interface_panel_send_button.Size = new System.Drawing.Size(83, 42);
+            this.a_main_screen_main_box_chats_mode_interface_panel_send_button.Size = new System.Drawing.Size(60, 42);
             this.a_main_screen_main_box_chats_mode_interface_panel_send_button.TabIndex = 1;
-            this.a_main_screen_main_box_chats_mode_interface_panel_send_button.Text = ">";
-            this.a_main_screen_main_box_chats_mode_interface_panel_send_button.UseVisualStyleBackColor = true;
+            this.a_main_screen_main_box_chats_mode_interface_panel_send_button.UseVisualStyleBackColor = false;
             this.a_main_screen_main_box_chats_mode_interface_panel_send_button.Click += new System.EventHandler(this.chats_mode_send_button_click);
             // 
             // a_main_screen_main_box_chats_mode_interface_panel_text_box
@@ -1320,9 +1363,9 @@
             // a_main_screen_left_panel_logo_box
             // 
             this.a_main_screen_left_panel_logo_box.Image = ((System.Drawing.Image)(resources.GetObject("a_main_screen_left_panel_logo_box.Image")));
-            this.a_main_screen_left_panel_logo_box.Location = new System.Drawing.Point(15, 470);
+            this.a_main_screen_left_panel_logo_box.Location = new System.Drawing.Point(17, 508);
             this.a_main_screen_left_panel_logo_box.Name = "a_main_screen_left_panel_logo_box";
-            this.a_main_screen_left_panel_logo_box.Size = new System.Drawing.Size(150, 242);
+            this.a_main_screen_left_panel_logo_box.Size = new System.Drawing.Size(150, 215);
             this.a_main_screen_left_panel_logo_box.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.a_main_screen_left_panel_logo_box.TabIndex = 0;
             this.a_main_screen_left_panel_logo_box.TabStop = false;
@@ -1346,7 +1389,7 @@
             this.a_main_screen_left_panel_change_image_label.Location = new System.Drawing.Point(14, 81);
             this.a_main_screen_left_panel_change_image_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.a_main_screen_left_panel_change_image_label.Name = "a_main_screen_left_panel_change_image_label";
-            this.a_main_screen_left_panel_change_image_label.Size = new System.Drawing.Size(150, 35);
+            this.a_main_screen_left_panel_change_image_label.Size = new System.Drawing.Size(150, 22);
             this.a_main_screen_left_panel_change_image_label.TabIndex = 4;
             this.a_main_screen_left_panel_change_image_label.Text = "Сменить фото";
             this.a_main_screen_left_panel_change_image_label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1463,7 +1506,7 @@
             this.MaximizeBox = false;
             this.Name = "main_form";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "ELMA";
+            this.Text = "FGP";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.a_sign_in_box.ResumeLayout(false);
             this.a_sign_in_box.PerformLayout();
@@ -1610,6 +1653,10 @@
         public System.Windows.Forms.Panel a_main_screen_left_panel_box;
         public System.Windows.Forms.Label a_main_screen_left_panel_label_emli_box;
         private PlaceHolderTextBox a_main_screen_main_box_chats_mode_interface_panel_text_box;
+        private System.Windows.Forms.Panel an_active_line;
+        public System.Windows.Forms.Panel a_main_screen_left_panel_box_line1;
+        public System.Windows.Forms.Panel a_main_screen_left_panel_box_line2;
+        public System.Windows.Forms.Panel a_main_screen_left_panel_box_line3;
     }
 }
 
