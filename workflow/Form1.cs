@@ -12,7 +12,6 @@ using System.IO;
 
 namespace workflow
 {
-
     public partial class main_form : Form
     {
 
@@ -267,30 +266,17 @@ namespace workflow
 
         private void a_main_screen_top_panel_button1_Click(object sender, MouseEventArgs e)
         {
-            //a_main_screen_top_panel_button1.BackColor = Super_Blue;
-            //a_main_screen_top_panel_button2.BackColor = Color.FromArgb(255, 255, 255);
-            //a_main_screen_top_panel_button3.BackColor = Color.FromArgb(255, 255, 255);
             screenConstructor.changeMainScreenEnvironment("main", this);
-            //a_main_screen_top_panel_button1.Paint += new System.Windows.Forms.PaintEventHandler(Panel1_paint);
-            //a_main_screen_top_panel_button1_text.ForeColor = Color.FromArgb(255, 255, 255);
         }
 
         private void a_main_screen_top_panel_button2_Click(object sender, MouseEventArgs e)
         {
-            //a_main_screen_top_panel_button2.BackColor = Super_Blue;
-            //a_main_screen_top_panel_button1.BackColor = Color.FromArgb(255, 255, 255);
-            //a_main_screen_top_panel_button3.BackColor = Color.FromArgb(255, 255, 255);
             screenConstructor.changeMainScreenEnvironment("documents", this);
-            //a_main_screen_top_panel_button2_text.ForeColor = Color.FromArgb(255, 255, 255);
         }
 
         private void a_main_screen_top_panel_button3_Click(object sender, MouseEventArgs e)
         {
-            //a_main_screen_top_panel_button3.BackColor = Super_Blue;
-            //a_main_screen_top_panel_button1.BackColor = Color.FromArgb(255, 255, 255);
-            //a_main_screen_top_panel_button2.BackColor = Color.FromArgb(255, 255, 255);
             screenConstructor.changeMainScreenEnvironment("chats", this);
-            //a_main_screen_top_panel_button3_text.ForeColor = Color.FromArgb(255, 255, 255);
         }
 
         public void a_add_news_button_click(object sender, EventArgs e)
@@ -526,6 +512,8 @@ namespace workflow
             string templateLabel = a_main_screen_main_box_add_template_panel_name_text_box.Text;
             string templateName = a_send_template_dialog.FileName;
 
+            const int lengthLimit = 50;
+
             if (templateName.Split('.').Length > 2)
             {
                 a_main_screen_main_box_add_template_panel_info_label.ForeColor = Color.Red;
@@ -539,6 +527,13 @@ namespace workflow
             {
                 a_main_screen_main_box_add_template_panel_info_label.ForeColor = Color.Red;
                 a_main_screen_main_box_add_template_panel_info_label.Text = "Нельзя отправлять на сервер файлы, c именем, содержащим спец. символы";
+                return;
+            }
+
+            if (templateLabel.Length > lengthLimit)
+            {
+                a_main_screen_main_box_add_template_panel_info_label.ForeColor = Color.Red;
+                a_main_screen_main_box_add_template_panel_info_label.Text = "Нельзя отправлять на сервер шаблоны с темой больше " + lengthLimit.ToString() + " символов";
                 return;
             }
 
@@ -587,28 +582,29 @@ namespace workflow
             string text = a_main_screen_main_box_chats_mode_interface_panel_text_box.Text;
             a_main_screen_main_box_chats_mode_interface_panel_text_box.Text = "";
             a_main_screen_main_box_chats_mode_interface_panel_text_box.PlaceHolderText = "Введите сообщение...";
-            Server.sendMessage(text);
+            if (text != "") Server.sendMessage(text);
             updateFormByServer(null, null);
             stopUpdatingMode = false;
         }
 
-        public void conversation_options_open(object sender, EventArgs e)
-        {
-            stopUpdatingMode = true;
-            Label senderLabel = sender as Label;
-            a_conversation_options_panel.Visible = true;
-            a_conversation_options_panel.BringToFront();
-            a_conversation_options_panel_name_text_box.Text = senderLabel.Text;
+        //public void conversation_options_open(object sender, EventArgs e)
+        //{
+        //    stopUpdatingMode = true;
+        //    Label senderLabel = sender as Label;
+        //    a_conversation_options_panel.Visible = true;
+        //    a_conversation_options_panel_message_label.Text = "";
+        //    a_conversation_options_panel.BringToFront();
+        //    a_conversation_options_panel_name_text_box.Text = senderLabel.Text;
 
-            a_conversation_options_panel_add_users_list_box.Items.Clear();
+        //    a_conversation_options_panel_add_users_list_box.Items.Clear();
 
-            foreach (string name in Server.getAllUsers())
-            {
-                a_conversation_options_panel_add_users_list_box.Items.Add(name);
-            }
+        //    foreach (string name in Server.getAllUsers())
+        //    {
+        //        a_conversation_options_panel_add_users_list_box.Items.Add(name);
+        //    }
 
-            Console.WriteLine("Conversation options");
-        }
+        //    Console.WriteLine("Conversation options");
+        //}
 
         private void a_conversation_options_panel_exit(object sender, EventArgs e)
         {
@@ -619,6 +615,17 @@ namespace workflow
         private void a_conversation_options_panel_save_new_options(object sender, EventArgs e)
         {
             string newName = a_conversation_options_panel_name_text_box.Text;
+            const int nameLength = 20;
+
+            if (newName.Length > nameLength)
+            {
+                a_conversation_options_panel_message_label.Text = "Название не может содержать больше " + nameLength.ToString()
+                    + "ти символов";
+                a_conversation_options_panel_message_label.ForeColor = Color.Red;
+                stopUpdatingMode = false;
+                return;
+            }
+
             Server.updateConversationName(newName, User.currentConversationId);
 
             foreach (var item in a_conversation_options_panel_add_users_list_box.SelectedItems)
@@ -696,6 +703,25 @@ namespace workflow
             {
                 a_main_screen_left_panel_label_emli_box.Text = "Счетчик ЭМЛиков";
             }
+        }
+
+        public void conversation_options_open(object sender, EventArgs e)
+        {
+            stopUpdatingMode = true;
+            ConversationSettingsPanel qwe = sender as ConversationSettingsPanel;
+            a_conversation_options_panel.Visible = true;
+            a_conversation_options_panel_message_label.Text = "";
+            a_conversation_options_panel.BringToFront();
+            a_conversation_options_panel_name_text_box.Text = qwe.nameOfConversation;
+
+            a_conversation_options_panel_add_users_list_box.Items.Clear();
+
+            foreach (string name in Server.getAllUsers())
+            {
+                a_conversation_options_panel_add_users_list_box.Items.Add(name);
+            }
+
+            Console.WriteLine("Conversation options");
         }
     }
 }

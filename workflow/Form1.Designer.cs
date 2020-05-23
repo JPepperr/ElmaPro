@@ -104,7 +104,6 @@
             this.a_dark_background = new System.Windows.Forms.Panel();
             this.a_main_screen_main_box_chats_mode_interface_panel = new System.Windows.Forms.Panel();
             this.a_main_screen_main_box_chats_mode_interface_panel_send_button = new System.Windows.Forms.Button();
-            this.a_main_screen_main_box_chats_mode_interface_panel_text_box = new workflow.PlaceHolderTextBox();
             this.a_main_screen_main_box_add_template_button = new System.Windows.Forms.Panel();
             this.a_main_screen_main_box_add_template_button_text = new System.Windows.Forms.Label();
             this.a_main_screen_main_box_add_news_button = new System.Windows.Forms.Panel();
@@ -139,6 +138,8 @@
             this.a_send_template_dialog = new System.Windows.Forms.OpenFileDialog();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.a_conversation_options_panel_message_label = new System.Windows.Forms.Label();
+            this.a_main_screen_main_box_chats_mode_interface_panel_text_box = new workflow.PlaceHolderTextBox();
             this.a_sign_in_box.SuspendLayout();
             this.a_sign_up_box.SuspendLayout();
             this.a_forgot_password_box.SuspendLayout();
@@ -515,6 +516,7 @@
             // 
             this.a_conversation_options_panel.BackColor = System.Drawing.Color.Pink;
             this.a_conversation_options_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.a_conversation_options_panel.Controls.Add(this.a_conversation_options_panel_message_label);
             this.a_conversation_options_panel.Controls.Add(this.a_conversation_options_panel_add_users_list_box);
             this.a_conversation_options_panel.Controls.Add(this.a_conversation_options_panel_name_label);
             this.a_conversation_options_panel.Controls.Add(this.a_conversation_options_panel_add_users_label);
@@ -525,7 +527,7 @@
             this.a_conversation_options_panel.Location = new System.Drawing.Point(439, 44);
             this.a_conversation_options_panel.Margin = new System.Windows.Forms.Padding(4);
             this.a_conversation_options_panel.Name = "a_conversation_options_panel";
-            this.a_conversation_options_panel.Size = new System.Drawing.Size(267, 416);
+            this.a_conversation_options_panel.Size = new System.Drawing.Size(308, 446);
             this.a_conversation_options_panel.TabIndex = 11;
             this.a_conversation_options_panel.Visible = false;
             // 
@@ -540,7 +542,7 @@
             this.a_conversation_options_panel_add_users_list_box.Margin = new System.Windows.Forms.Padding(4);
             this.a_conversation_options_panel_add_users_list_box.Name = "a_conversation_options_panel_add_users_list_box";
             this.a_conversation_options_panel_add_users_list_box.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.a_conversation_options_panel_add_users_list_box.Size = new System.Drawing.Size(255, 166);
+            this.a_conversation_options_panel_add_users_list_box.Size = new System.Drawing.Size(297, 166);
             this.a_conversation_options_panel_add_users_list_box.TabIndex = 13;
             // 
             // a_conversation_options_panel_name_label
@@ -572,7 +574,7 @@
             this.a_conversation_options_panel_save_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.a_conversation_options_panel_save_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_conversation_options_panel_save_button.ForeColor = System.Drawing.Color.Black;
-            this.a_conversation_options_panel_save_button.Location = new System.Drawing.Point(41, 322);
+            this.a_conversation_options_panel_save_button.Location = new System.Drawing.Point(69, 357);
             this.a_conversation_options_panel_save_button.Margin = new System.Windows.Forms.Padding(4);
             this.a_conversation_options_panel_save_button.Name = "a_conversation_options_panel_save_button";
             this.a_conversation_options_panel_save_button.Size = new System.Drawing.Size(163, 33);
@@ -588,7 +590,7 @@
             this.a_conversation_options_panel_leave_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.a_conversation_options_panel_leave_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.a_conversation_options_panel_leave_button.ForeColor = System.Drawing.Color.Black;
-            this.a_conversation_options_panel_leave_button.Location = new System.Drawing.Point(41, 363);
+            this.a_conversation_options_panel_leave_button.Location = new System.Drawing.Point(69, 395);
             this.a_conversation_options_panel_leave_button.Margin = new System.Windows.Forms.Padding(4);
             this.a_conversation_options_panel_leave_button.Name = "a_conversation_options_panel_leave_button";
             this.a_conversation_options_panel_leave_button.Size = new System.Drawing.Size(163, 33);
@@ -603,7 +605,7 @@
             this.a_conversation_options_panel_name_text_box.Location = new System.Drawing.Point(4, 62);
             this.a_conversation_options_panel_name_text_box.Margin = new System.Windows.Forms.Padding(4);
             this.a_conversation_options_panel_name_text_box.Name = "a_conversation_options_panel_name_text_box";
-            this.a_conversation_options_panel_name_text_box.Size = new System.Drawing.Size(257, 24);
+            this.a_conversation_options_panel_name_text_box.Size = new System.Drawing.Size(297, 24);
             this.a_conversation_options_panel_name_text_box.TabIndex = 2;
             // 
             // a_conversation_options_panel_exit_button
@@ -612,7 +614,7 @@
             this.a_conversation_options_panel_exit_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.a_conversation_options_panel_exit_button.FlatAppearance.BorderSize = 0;
             this.a_conversation_options_panel_exit_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.a_conversation_options_panel_exit_button.Location = new System.Drawing.Point(235, 1);
+            this.a_conversation_options_panel_exit_button.Location = new System.Drawing.Point(276, 1);
             this.a_conversation_options_panel_exit_button.Margin = new System.Windows.Forms.Padding(4);
             this.a_conversation_options_panel_exit_button.Name = "a_conversation_options_panel_exit_button";
             this.a_conversation_options_panel_exit_button.Size = new System.Drawing.Size(25, 27);
@@ -1107,18 +1109,6 @@
             this.a_main_screen_main_box_chats_mode_interface_panel_send_button.UseVisualStyleBackColor = false;
             this.a_main_screen_main_box_chats_mode_interface_panel_send_button.Click += new System.EventHandler(this.chats_mode_send_button_click);
             // 
-            // a_main_screen_main_box_chats_mode_interface_panel_text_box
-            // 
-            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic);
-            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.ForeColor = System.Drawing.Color.Gray;
-            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.Location = new System.Drawing.Point(5, 0);
-            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.Name = "a_main_screen_main_box_chats_mode_interface_panel_text_box";
-            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.PlaceHolderText = null;
-            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.Size = new System.Drawing.Size(1025, 76);
-            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.TabIndex = 0;
-            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.Text = "";
-            // 
             // a_main_screen_main_box_add_template_button
             // 
             this.a_main_screen_main_box_add_template_button.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -1490,6 +1480,27 @@
             this.a_send_template_dialog.FileName = "a_selected_file";
             this.a_send_template_dialog.FileOk += new System.ComponentModel.CancelEventHandler(this.a_select_template_set);
             // 
+            // a_conversation_options_panel_message_label
+            // 
+            this.a_conversation_options_panel_message_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.a_conversation_options_panel_message_label.Location = new System.Drawing.Point(4, 307);
+            this.a_conversation_options_panel_message_label.Name = "a_conversation_options_panel_message_label";
+            this.a_conversation_options_panel_message_label.Size = new System.Drawing.Size(297, 38);
+            this.a_conversation_options_panel_message_label.TabIndex = 14;
+            this.a_conversation_options_panel_message_label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // a_main_screen_main_box_chats_mode_interface_panel_text_box
+            // 
+            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic);
+            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.ForeColor = System.Drawing.Color.Gray;
+            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.Location = new System.Drawing.Point(5, 0);
+            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.Name = "a_main_screen_main_box_chats_mode_interface_panel_text_box";
+            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.PlaceHolderText = null;
+            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.Size = new System.Drawing.Size(1025, 76);
+            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.TabIndex = 0;
+            this.a_main_screen_main_box_chats_mode_interface_panel_text_box.Text = "";
+            // 
             // main_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1652,11 +1663,12 @@
         public System.Windows.Forms.ProgressBar a_main_screen_left_panel_progress_emli_box;
         public System.Windows.Forms.Panel a_main_screen_left_panel_box;
         public System.Windows.Forms.Label a_main_screen_left_panel_label_emli_box;
-        private PlaceHolderTextBox a_main_screen_main_box_chats_mode_interface_panel_text_box;
         private System.Windows.Forms.Panel an_active_line;
         public System.Windows.Forms.Panel a_main_screen_left_panel_box_line1;
         public System.Windows.Forms.Panel a_main_screen_left_panel_box_line2;
         public System.Windows.Forms.Panel a_main_screen_left_panel_box_line3;
+        private PlaceHolderTextBox a_main_screen_main_box_chats_mode_interface_panel_text_box;
+        public System.Windows.Forms.Label a_conversation_options_panel_message_label;
     }
 }
 

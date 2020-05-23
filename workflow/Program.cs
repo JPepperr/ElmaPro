@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -16,6 +17,35 @@ using System.Xml.Serialization;
 
 namespace workflow
 {
+    public class ConversationSettingsPanel : Panel
+    {
+        public string nameOfConversation;
+        public PictureBox settingsPicture;
+        public ConversationSettingsPanel(string _nameOfConversation, PictureBox _settingsPicture)
+        {
+            nameOfConversation = _nameOfConversation;
+            settingsPicture = _settingsPicture;
+        }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x20;
+                return cp;
+            }
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(0, 0, 0, 0)), this.ClientRectangle);
+        }
+
+        protected override void OnSizeChanged(EventArgs e)
+        {
+            base.OnSizeChanged(e);
+        }
+    }
 
     public class PlaceHolderTextBox : RichTextBox
     {
@@ -1630,7 +1660,11 @@ namespace workflow
                 text.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
                 text.Text = elements[num].text;
 
-                element.Size = new Size(text.GetPreferredSize(new Size(widthOfElements, 0)).Width + 30, text.GetPreferredSize(new Size(widthOfElements, 0)).Height + 40);
+                Label authorLimit = new Label();
+                authorLimit.Text = elements[num].author;
+                int finalWidth = Math.Max(authorLimit.GetPreferredSize(new Size(widthOfElements, 0)).Width, text.GetPreferredSize(new Size(widthOfElements, 0)).Width) + 30;
+
+                element.Size = new Size(finalWidth, text.GetPreferredSize(new Size(widthOfElements, 0)).Height + 40);
                 element.BorderStyle = BorderStyle.FixedSingle;
 
                 if (elements[num].author == main_form.User.name)
@@ -1671,14 +1705,33 @@ namespace workflow
 
             Label nameOfConversation = new Label();
             nameOfConversation.Text = conversation.name;
-            nameOfConversation.Size = new Size(180, 20);
+            nameOfConversation.Size = new Size(320, 20);
             nameOfConversation.BackColor = Color.Pink;
             nameOfConversation.TextAlign = ContentAlignment.MiddleCenter;
             nameOfConversation.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             nameOfConversation.Location = new Point(connectForm.a_main_screen_main_box.Size.Width / 2 - nameOfConversation.Size.Width / 2, 0);
             nameOfConversation.Tag = conversation.id;
             nameOfConversation.Cursor = Cursors.Hand;
-            nameOfConversation.Click += connectForm.conversation_options_open;
+            //nameOfConversation.Click += connectForm.conversation_options_open;
+
+            PictureBox settingsPicture = new PictureBox();
+            Bitmap original = new Bitmap(Directory.GetCurrentDirectory() + "\\chat_settings.png");
+            int wq = 20;
+            int hq = 20;
+            settingsPicture.Location = new Point(560, 0);
+            settingsPicture.BackColor = Color.Pink;
+            settingsPicture.Size = new Size(20, 20);
+            settingsPicture.Image = new Bitmap(original, wq, hq);
+
+            ConversationSettingsPanel currentConversationPanel = new ConversationSettingsPanel(nameOfConversation.Text, settingsPicture);
+            currentConversationPanel.Size = new Size(320, 20);
+            currentConversationPanel.Location = new Point(connectForm.a_main_screen_main_box.Size.Width / 2 - nameOfConversation.Size.Width / 2, 0);
+            currentConversationPanel.Cursor = Cursors.Hand;
+            currentConversationPanel.Click += connectForm.conversation_options_open;
+            currentConversationPanel.Parent = nameOfConversation;
+            currentConversationPanel.BackColor = Color.Transparent;
+            connectForm.a_main_screen_main_box.Controls.Add(currentConversationPanel);
+            connectForm.a_main_screen_main_box.Controls.Add(settingsPicture);
             connectForm.a_main_screen_main_box.Controls.Add(nameOfConversation);
 
             return yPosition;
