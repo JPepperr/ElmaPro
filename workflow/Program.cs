@@ -15,6 +15,8 @@ using System.Diagnostics;
 using System.Net.Sockets;
 using System.Xml.Serialization;
 
+//const int COLUMN_AUTHOR_WIDTH = 20;
+
 namespace workflow
 {
     public class ConversationSettingsPanel : Panel
@@ -509,13 +511,39 @@ namespace workflow
         public string currentConversationId;
         public Dictionary<string, bool> privileges;
 
+        public string get_photo_link()
+        {
+            string photoStorage = Directory.GetCurrentDirectory() + "\\profile_photos";
+            string currentPhotoLink = photoStorage + "\\" + name + ".jpg";
+            if (!File.Exists(currentPhotoLink)) File.Copy(photoStorage + "\\profile_plug.jpg", currentPhotoLink);
+            return currentPhotoLink;
+        }
+
+        public void set_photo(workflow.main_form connectForm)
+        {
+            if (connectForm.a_main_screen_left_panel_picture.Image != null)
+                connectForm.a_main_screen_left_panel_picture.Image.Dispose();
+            var width = (int)connectForm.a_main_screen_left_panel_picture_box.Size.Width;
+            var height = (int)connectForm.a_main_screen_left_panel_picture_box.Size.Height;
+            string currentPhoto = get_photo_link();
+            Bitmap original = new Bitmap(currentPhoto);
+            connectForm.a_main_screen_left_panel_picture.Image = new Bitmap(original, width, height);
+            original.Dispose();
+        }
+
         public void set_photo(string photo_src, workflow.main_form connectForm)
         {
             if (connectForm.a_main_screen_left_panel_picture.Image != null)
                 connectForm.a_main_screen_left_panel_picture.Image.Dispose();
             var width = (int)connectForm.a_main_screen_left_panel_picture_box.Size.Width;
             var height = (int)connectForm.a_main_screen_left_panel_picture_box.Size.Height;
-            Bitmap original = new Bitmap(photo_src);
+            string currentPhoto = get_photo_link();
+            if (photo_src != currentPhoto)
+            {
+                File.Delete(currentPhoto);
+                File.Copy(photo_src, currentPhoto);
+            }
+            Bitmap original = new Bitmap(currentPhoto);
             connectForm.a_main_screen_left_panel_picture.Image = new Bitmap(original, width, height);
             original.Dispose();
         }
@@ -1229,7 +1257,7 @@ namespace workflow
                 Label author = new Label();
                 author.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
                 author.Text = elements[num].author;
-                widthOfElementIncide = widthOfElements / 10 * 1;
+                widthOfElementIncide = widthOfElements / 10 * 2;
                 heightOfElementIncide = element.Size.Height;
                 author.Size = new Size(widthOfElementIncide, heightOfElementIncide);
                 author.Location = new Point(xPositionIncide, 0);
@@ -1269,7 +1297,7 @@ namespace workflow
 
                     content.Text = elements[num].content;
                     content.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-                    widthOfElementIncide = widthOfElements / 10 * 6;
+                    widthOfElementIncide = widthOfElements / 10 * 5;
                     heightOfElementIncide = element.Size.Height;
                     content.Size = new Size(widthOfElementIncide, heightOfElementIncide);
                     content.Location = new Point(xPositionIncide, 0);
@@ -1281,7 +1309,7 @@ namespace workflow
 
                     widthOfElementIncide = widthOfElements / 10 * 1 + 1;
                     heightOfElementIncide = element.Size.Height;
-                    buttonBox.Size = new Size(widthOfElementIncide, heightOfElementIncide);
+                    buttonBox.Size = new Size(widthOfElementIncide + 5, heightOfElementIncide); // +5 чтобы убрать синеву за границей
                     buttonBox.Location = new Point(xPositionIncide, 0);
                     buttonBox.BorderStyle = BorderStyle.FixedSingle;
                     xPositionIncide += widthOfElementIncide - 1;
@@ -1309,9 +1337,9 @@ namespace workflow
                 {
                     content.Text = elements[num].content;
                     content.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-                    widthOfElementIncide = widthOfElements / 10 * 7;
+                    widthOfElementIncide = widthOfElements / 10 * 6;
                     heightOfElementIncide = element.Size.Height;
-                    content.Size = new Size(widthOfElementIncide, heightOfElementIncide);
+                    content.Size = new Size(widthOfElementIncide + 5, heightOfElementIncide); // +5 чтобы убрать синеву за границей
                     content.Location = new Point(xPositionIncide, 0);
                     content.BorderStyle = BorderStyle.FixedSingle;
                     if (num == 0) content.TextAlign = ContentAlignment.MiddleCenter;
@@ -1361,6 +1389,18 @@ namespace workflow
 
                 int xPositionIncide = 0;
 
+                Label author = new Label();
+                author.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                author.Text = elements[num].author;
+                widthOfElementIncide = widthOfElements / 10 * 2;
+                heightOfElementIncide = element.Size.Height;
+                author.Size = new Size(widthOfElementIncide, heightOfElementIncide);
+                author.Location = new Point(xPositionIncide, 0);
+                author.BorderStyle = BorderStyle.FixedSingle;
+                if (num == 0) author.TextAlign = ContentAlignment.MiddleCenter;
+                else author.TextAlign = ContentAlignment.MiddleLeft;
+                xPositionIncide += widthOfElementIncide - 1;
+
                 Label read = new Label();
                 read.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
                 if (num == 0) //Первый элемент
@@ -1371,7 +1411,7 @@ namespace workflow
                 {
                     read.Text = elements[num].status ? "Прочитано" : "Новое";
                 }
-                widthOfElementIncide = widthOfElements / 10 * 2;
+                widthOfElementIncide = widthOfElements / 10 * 1;
                 heightOfElementIncide = element.Size.Height;
                 read.Size = new Size(widthOfElementIncide, heightOfElementIncide);
                 read.Location = new Point(xPositionIncide, 0);
@@ -1379,22 +1419,10 @@ namespace workflow
                 read.TextAlign = ContentAlignment.MiddleCenter;
                 xPositionIncide += widthOfElementIncide - 1;
 
-                Label author = new Label();
-                author.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-                author.Text = elements[num].author;
-                widthOfElementIncide = widthOfElements / 10 * 3;
-                heightOfElementIncide = element.Size.Height;
-                author.Size = new Size(widthOfElementIncide, heightOfElementIncide);
-                author.Location = new Point(xPositionIncide, 0);
-                author.BorderStyle = BorderStyle.FixedSingle;
-                if (num == 0) author.TextAlign = ContentAlignment.MiddleCenter;
-                else author.TextAlign = ContentAlignment.MiddleLeft;
-                xPositionIncide += widthOfElementIncide - 1;
-
                 Label label = new Label();
                 label.Text = elements[num].label;
                 label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-                widthOfElementIncide = widthOfElements / 10 * 4;
+                widthOfElementIncide = widthOfElements / 10 * 6;
                 heightOfElementIncide = element.Size.Height;
                 label.Size = new Size(widthOfElementIncide, heightOfElementIncide);
                 label.Location = new Point(xPositionIncide, 0);
@@ -1436,7 +1464,7 @@ namespace workflow
                 if (properties.ContainsKey(num))
                 {
                     element.BackColor = properties[num];
-                    element.Size = new Size(widthOfElements, heightOfCustomElements);
+                    element.Size = new Size(widthOfElements - 5, heightOfCustomElements); // -5 чтобы убрать синеву за границей
                     buttonBox.Controls.Add(readDocumentText);
                 }
                 else
@@ -1491,7 +1519,7 @@ namespace workflow
                 Label author = new Label();
                 author.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
                 author.Text = elements[num].author;
-                widthOfElementIncide = widthOfElements / 10 * 4;
+                widthOfElementIncide = widthOfElements / 10 * 2;
                 heightOfElementIncide = element.Size.Height;
                 author.Size = new Size(widthOfElementIncide, heightOfElementIncide);
                 author.Location = new Point(xPositionIncide, 0);
@@ -1503,7 +1531,7 @@ namespace workflow
                 Label name = new Label();
                 name.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
                 name.Text = elements[num].name;
-                widthOfElementIncide = widthOfElements / 10 * 4;
+                widthOfElementIncide = widthOfElements / 10 * 6;
                 heightOfElementIncide = element.Size.Height;
                 name.Size = new Size(widthOfElementIncide, heightOfElementIncide);
                 name.Location = new Point(xPositionIncide, 0);
@@ -1613,7 +1641,7 @@ namespace workflow
                 if (properties.ContainsKey(num))
                 {
                     element.BackColor = properties[num];
-                    element.Size = new Size(widthOfElements, heightOfCustomElements);
+                    element.Size = new Size(widthOfElements - 5, heightOfCustomElements); // -5 чтобы убрать синеву за границей
                     buttonBox.Controls.Add(downloadTemplateText);
                 }
                 else
@@ -1705,7 +1733,7 @@ namespace workflow
 
             Label nameOfConversation = new Label();
             nameOfConversation.Text = conversation.name;
-            nameOfConversation.Size = new Size(320, 20);
+            nameOfConversation.Size = new Size(350, 20);
             nameOfConversation.BackColor = Color.Pink;
             nameOfConversation.TextAlign = ContentAlignment.MiddleCenter;
             nameOfConversation.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1718,13 +1746,13 @@ namespace workflow
             Bitmap original = new Bitmap(Directory.GetCurrentDirectory() + "\\chat_settings.png");
             int wq = 20;
             int hq = 20;
-            settingsPicture.Location = new Point(560, 0);
+            settingsPicture.Location = new Point(580, 0);
             settingsPicture.BackColor = Color.Pink;
             settingsPicture.Size = new Size(20, 20);
             settingsPicture.Image = new Bitmap(original, wq, hq);
 
             ConversationSettingsPanel currentConversationPanel = new ConversationSettingsPanel(nameOfConversation.Text, settingsPicture);
-            currentConversationPanel.Size = new Size(320, 20);
+            currentConversationPanel.Size = new Size(350, 20);
             currentConversationPanel.Location = new Point(connectForm.a_main_screen_main_box.Size.Width / 2 - nameOfConversation.Size.Width / 2, 0);
             currentConversationPanel.Cursor = Cursors.Hand;
             currentConversationPanel.Click += connectForm.conversation_options_open;

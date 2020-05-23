@@ -30,7 +30,7 @@ namespace workflow
         {
             InitializeComponent();
             a_main_screen_main_box_chats_mode_interface_panel_text_box.PlaceHolderText = "Введите сообщение...";
-            User.set_photo(Directory.GetCurrentDirectory() + "\\profile_photo.jpg", this);
+            //User.set_photo(User.get_photo_link(), this);
         }
 
         public void formSetter()
@@ -47,6 +47,7 @@ namespace workflow
                 string[] userInfo = textFromFile.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
                 Server.getUser(userInfo[0], userInfo[1]);
                 main_form.User.set_name(main_form.User.name, this);
+                main_form.User.set_photo(this);
             }
 
             screenConstructor.setBox(a_main_screen_box, this);
@@ -238,13 +239,7 @@ namespace workflow
         {
             stopUpdatingMode = false;
             Console.WriteLine("Image set by user : " + this.a_change_image_dialog.FileName);
-            if (File.Exists(Directory.GetCurrentDirectory() + "\\profile_photo.jpg"))
-            {
-                User.set_photo(Directory.GetCurrentDirectory() + "\\profile_plug.jpg", this);
-                File.Delete(Directory.GetCurrentDirectory() + "\\profile_photo.jpg");
-            }
-            File.Copy(this.a_change_image_dialog.FileName, Directory.GetCurrentDirectory() + "\\profile_photo.jpg");
-            User.set_photo(Directory.GetCurrentDirectory() + "\\profile_photo.jpg", this);
+            User.set_photo(this.a_change_image_dialog.FileName, this);
         }
 
         private void a_image_changed_by_user(object sender, EventArgs e)
@@ -305,7 +300,7 @@ namespace workflow
                 return;
             }
 
-            const int maxStringLength = 40;
+            const int maxStringLength = 35;
             const int maxCntStrings = 5;
             int start_of_last_string = 0;
             int cnt_of_strings = 1;
@@ -325,7 +320,7 @@ namespace workflow
             if (!norm || cnt_of_strings > maxCntStrings) {
                 a_main_screen_main_box_add_news_panel_info_label.ForeColor = Color.Red;
                 a_main_screen_main_box_add_news_panel_info_label.Text = "Новость должна содержать не более " + maxCntStrings.ToString() +
-                "ти строк, каждая на длиннее " + maxStringLength.ToString() + "ка символов";
+                "ти строк, каждая на длиннее " + maxStringLength.ToString() + "ти символов";
                 return;
             }
 
@@ -410,6 +405,7 @@ namespace workflow
 
         private void a_image_changed_by_user(object sender, MouseEventArgs e)
         {
+            this.a_change_image_dialog.Filter = "Image files(*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
             this.a_change_image_dialog.ShowDialog();
         }
 
