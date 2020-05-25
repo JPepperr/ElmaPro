@@ -110,6 +110,7 @@ namespace workflow
 
             if (Server.check_user_enter(login, password).Item1 == true)
             {
+                this.a_sign_in_password_text_box.Text = "";
                 this.a_sign_in_forgot_password_button.Visible = false; //Убираем кнопку 'забыли пароль'
                 this.a_sign_in_info_box.Text = ""; //Убираем окно ошибки
                 Console.WriteLine("sign in > " + "password : " + password + " login : " + login);
@@ -292,13 +293,13 @@ namespace workflow
 
             const int maxLabelLength = 25;
 
-            if (label_of_news.Length > maxLabelLength)
-            {
-                a_main_screen_main_box_add_news_panel_info_label.ForeColor = Color.Red;
-                a_main_screen_main_box_add_news_panel_info_label.Text = "Длина заголовка новости не может превышать " +
-                    maxLabelLength.ToString() + " символов";
-                return;
-            }
+            //if (label_of_news.Length > maxLabelLength)
+            //{
+            //    a_main_screen_main_box_add_news_panel_info_label.ForeColor = Color.Red;
+            //    a_main_screen_main_box_add_news_panel_info_label.Text = "Длина заголовка новости не может превышать " +
+            //        maxLabelLength.ToString() + " символов";
+            //    return;
+            //}
 
             const int maxStringLength = 35;
             const int maxCntStrings = 5;
@@ -317,12 +318,12 @@ namespace workflow
 
             if (content_of_news.Length - start_of_last_string > maxStringLength) norm = false;
 
-            if (!norm || cnt_of_strings > maxCntStrings) {
-                a_main_screen_main_box_add_news_panel_info_label.ForeColor = Color.Red;
-                a_main_screen_main_box_add_news_panel_info_label.Text = "Новость должна содержать не более " + maxCntStrings.ToString() +
-                "ти строк, каждая на длиннее " + maxStringLength.ToString() + "ти символов";
-                return;
-            }
+            //if (!norm || cnt_of_strings > maxCntStrings) {
+            //    a_main_screen_main_box_add_news_panel_info_label.ForeColor = Color.Red;
+            //    a_main_screen_main_box_add_news_panel_info_label.Text = "Новость должна содержать не более " + maxCntStrings.ToString() +
+            //    "ти строк, каждая на длиннее " + maxStringLength.ToString() + "ти символов";
+            //    return;
+            //}
 
             if (label_of_news != "" && content_of_news != "")
             {
@@ -346,6 +347,7 @@ namespace workflow
             a_main_screen_main_box_add_news_panel.Visible = false;
             a_dark_background.Visible = false;
             stopUpdatingMode = false;
+            screenConstructor.changeMainScreenEnvironment(currentEnvironment, this, currentUnderEnvironment);
         }
 
         public void a_deleteNews_button_click(object sender, EventArgs e)
@@ -458,6 +460,11 @@ namespace workflow
                 a_main_screen_main_box_add_file_panel_info_label.ForeColor = Color.Green;
                 a_main_screen_main_box_add_file_panel_info_label.Text = "Успешно отправлено";
                 a_send_file_dialog.FileName = "a_selected_file";
+                //a_main_screen_main_box_add_file_panel_info_label.Text = "";
+                a_main_screen_main_box_add_file_panel_label_text_box.Text = "";
+                a_main_screen_main_box_add_file_panel_file_name_label.Text = "";
+                a_send_file_dialog.Dispose();
+                a_main_screen_main_box_add_file_panel_recipients_list_box.ClearSelected();
             }
             else
             {
@@ -496,6 +503,7 @@ namespace workflow
             stopUpdatingMode = false;
             a_main_screen_main_box_add_template_panel.Visible = false;
             a_dark_background.Visible = false;
+            screenConstructor.changeMainScreenEnvironment(currentEnvironment, this, currentUnderEnvironment);
         }
 
         private void a_select_template_set(object sender, CancelEventArgs e)

@@ -650,7 +650,7 @@ namespace workflow
                 connectForm.a_main_screen_left_panel_progress_emli_box.Visible = true;
             }
 
-            //connectForm.currentUnderEnvironment = "main";
+            connectForm.currentUnderEnvironment = "main";
 
             //List<string> labelLeftMain = new List<string>() { "Расписание: " };
             //List<string> contentLeftMain = main_form.User.shedule;
@@ -970,6 +970,7 @@ namespace workflow
             connectForm.a_main_screen_left_panel_logo_emli_box.Visible = false;
             connectForm.a_main_screen_left_panel_progress_emli_box.Visible = false;
             connectForm.a_main_screen_left_panel_label_emli_box.Visible = false;
+            connectForm.a_dark_background.Visible = false;
 
             if (clearLeft) connectForm.a_main_screen_left_panel_custom_box.Controls.Clear();
 
@@ -1262,7 +1263,8 @@ namespace workflow
                 author.Size = new Size(widthOfElementIncide, heightOfElementIncide);
                 author.Location = new Point(xPositionIncide, 0);
                 author.BorderStyle = BorderStyle.FixedSingle;
-                author.TextAlign = ContentAlignment.MiddleCenter;
+                if (num == 0) author.TextAlign = ContentAlignment.MiddleCenter;
+                else author.TextAlign = ContentAlignment.MiddleLeft;
                 xPositionIncide += widthOfElementIncide - 1;
 
                 Label time = new Label();
@@ -1284,7 +1286,8 @@ namespace workflow
                 label.Size = new Size(widthOfElementIncide, heightOfElementIncide);
                 label.Location = new Point(xPositionIncide, 0);
                 label.BorderStyle = BorderStyle.FixedSingle;
-                label.TextAlign = ContentAlignment.MiddleCenter;
+                if (num == 0) label.TextAlign = ContentAlignment.MiddleCenter;
+                else label.TextAlign = ContentAlignment.MiddleLeft;
                 xPositionIncide += widthOfElementIncide - 1;
 
                 Label content = new Label();
